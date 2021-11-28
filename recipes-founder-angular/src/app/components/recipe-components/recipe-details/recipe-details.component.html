@@ -1,0 +1,42 @@
+<div class="container">
+    <div class="jumbotron color">
+        <h2>{{recipe.title}}</h2>
+        <div class="row ">
+            <p class="subtitle">
+                <mat-icon>schedule</mat-icon><strong> Ready in</strong> {{recipe.readyInMinutes}}
+                <strong>minutes</strong>
+            </p>
+            <p class="subtitle">
+                <mat-icon>restaurant</mat-icon> <strong> Servings:</strong> {{recipe.servings}}
+            </p>
+            <div class="row chips">
+                <mat-chip-list cdkDropList cdkDropListOrientation="horizontal">
+                    <mat-chip class="chip" cdkDrag *ngFor="let tag of tags">
+                        {{tag}}
+                    </mat-chip>
+                </mat-chip-list>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <h5>Summary</h5>
+        <div class="row">
+            <p class="summary-text-style" [innerHTML]="recipe.summary"></p>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <img [src]="recipe.image">
+    </div>
+
+    <!-- <div class="col-md-12">
+        <h5>Ingredients</h5>
+        <ul *ngFor="let ingredient of recipe.extendedIngredients">
+            <li>{{ingredient.original}} ({{ingredient.measures.metric.amount}} {{ingredient.measures.metric.unitShort}}
+                {{ingredient.name}})</li>
+        </ul>
+    </div> -->
+    <div class="col-md-12">
+           <img [src]="steps">
+    </div>
+</div>

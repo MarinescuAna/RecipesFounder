@@ -1,0 +1,45 @@
+h2{
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: green;
+}
+h5{
+    font-weight: bold;
+    font-size: 50px;
+    
+}
+
+.summary-text-style{
+    font-size: 20px;
+}
+
+.subtitle{
+font-size: 15px;
+color: green;
+text-align: center;
+}
+.color{
+    background-color: azure !important;
+}
+.example-box.cdk-drag-animating {
+    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+  }
+  
+  .example-chip .cdk-drop-list-dragging {
+    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+  }
+  .chip{
+      background-color: green;
+      color: azure;
+      font-weight: bold;
+      font-size: 15px;
+  }
+  .chips{
+      display: flex;
+      justify-content: center;
+  }
+
+li{
+    font-size: 20px;
+}

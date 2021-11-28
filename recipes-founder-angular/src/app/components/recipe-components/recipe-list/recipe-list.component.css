@@ -1,6 +1,14 @@
-.body{
-    margin: 11%;
-    position: relative;
-    column-count: 2;
+.container-custom{
+    margin:5%;
 }
 
+.search-bar{
+    color: green;
+    border-color: green;
+    border-width: 3px;
+    border-radius: 2rem;
+    margin-top: -3% !important;
+    width: 100% !important;
+    height: 50% !important;
+
+}

@@ -1,8 +1,7 @@
 .mat-card{
-    width: 70%;
+    width: 100%;
     display: block;
-    padding: 40px;
-    margin-left: 5%;
+    padding: 30px;
     position: relative;
     border-radius: 4em;
     margin-bottom: 5%;
@@ -17,7 +16,7 @@ img{
 }
 
 mat-card-title{
-    font-size: 25px;
+    font-size: 18px;
     font-weight: bold;
 }
 .a{
@@ -28,7 +27,7 @@ mat-card-title{
     line-height: 60px;
     position: relative;
     text-transform: uppercase;
-    width: 259px;
+    width: 200px;
     height: 60px;
     text-align: center;
     transition: all 0.2s;

@@ -5,21 +5,40 @@ import { BaseService } from './base.service';
 @Injectable({
   providedIn: 'root'
 })
-export class RecipeService extends BaseService{
 
-  url:string;
+export class RecipeService extends BaseService{
   
   constructor(injector: Injector) {
     super(injector);
   }
 
   public GetRecipes():any{ 
-    this.url=`${environment.urlApiSpoonacular}complexSearch?apiKey=${environment.apiSpoonacularKey}`;
-    return super.getMany<any>(this.url);
+    let url=`${environment.urlApiSpoonacular}complexSearch?apiKey=${environment.apiSpoonacularKey}`;
+    return super.getMany<any>(url);
   }
 
   public GetRecipeCard(id:string):any{
-    this.url = `${environment.urlApiSpoonacular}${id}/card?apiKey=${environment.apiSpoonacularKey}`;
-    return super.getOne(this.url);
+    let url = `${environment.urlApiSpoonacular}${id}/card?apiKey=${environment.apiSpoonacularKey}`;
+    return super.getOne(url);
+  }
+
+  public GetRecipeInformation(id:string):any{
+    let url = `${environment.urlApiSpoonacular}${id}/information?includeNutrition=false&apiKey=${environment.apiSpoonacularKey}`;
+    return super.getOne(url);
+  }
+  
+  public GetRecipeIngredients(id:string):any{
+    let url = `${environment.urlApiSpoonacular}${id}/summary?apiKey=${environment.apiSpoonacularKey}`;
+    return super.getOne(url);
+  }
+
+  public GetSteps(id:string):any{
+    let url = `${environment.urlApiSpoonacular}${id}/analyzedInstructions?apiKey=${environment.apiSpoonacularKey}`;
+    return super.getOne(url);
+  }
+
+  public GetStepsImage(id:string):any{
+    let url = `${environment.urlApiSpoonacular}${id}/card?backgroundColor=f0ffff&apiKey=${environment.apiSpoonacularKey}`;
+    return super.getOne(url);
   }
 }

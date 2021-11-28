@@ -1,0 +1,9 @@
+a{
+    color: green !important;
+    font-weight: bold;
+}
+
+nav{
+    border-color: green !important;
+    border-width: 2px !important;
+}

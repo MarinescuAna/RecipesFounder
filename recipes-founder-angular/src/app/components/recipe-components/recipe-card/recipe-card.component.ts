@@ -1,8 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { NavigationExtras, Router } from '@angular/router';
-import { RecipeCardModule } from 'src/app/modules/recipe-card.module';
 import { RecipeOverviewInfoModule } from 'src/app/modules/recipe-overview-info.module';
-import { RecipeService } from 'src/app/services/recipe.service';
 
 @Component({
   selector: 'app-recipe-card',
@@ -12,7 +10,8 @@ import { RecipeService } from 'src/app/services/recipe.service';
 export class RecipeCardComponent implements OnInit {
 
   @Input() recipe: RecipeOverviewInfoModule;
-  constructor( private route: Router) {
+  constructor( private route:Router
+      ) {
 
    }
 
@@ -20,7 +19,12 @@ export class RecipeCardComponent implements OnInit {
 
   }
 
-  GoTo():void{
-    this.route.navigate(['details',this.recipe.id]);
+  onRouteTo():void{
+    let navigationExtras: NavigationExtras = {
+      queryParams:{ 
+        id : this.recipe.id 
+      }
+    };
+    this.route.navigate(['\details'], navigationExtras);
   }
 }
