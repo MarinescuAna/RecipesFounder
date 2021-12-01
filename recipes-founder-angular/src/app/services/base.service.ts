@@ -1,6 +1,6 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable, Injector } from '@angular/core';
-import { catchError, map, Observable } from 'rxjs';
+import { catchError, map, Observable, throwError } from 'rxjs';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -26,11 +26,33 @@ export class BaseService {
     }));
   }
 
-  protected getOne<T>(url: string):Observable<T>{
-    return this.http.get(url)
-      .pipe(map((response) => {
-        return response as T;
-      }));
- }
+  protected getOne<T>(url: string):any{
+    return this.http.get(url).pipe(
+      catchError(error => {
+          let errorMsg: string;
+         debugger
+         throwError(error);
+         return error;
+      })
+  );
+}
+
+private getServerErrorMessage(error: HttpErrorResponse): string {
+switch (error.status) {
+case 404: {
+  return `Not Found: ${error.message}`;
+}
+case 403: {
+  return `Access Denied: ${error.message}`;
+}
+case 500: {
+  return `Internal Server Error: ${error.message}`;
+}
+default: {
+  return `Unknown Server Error: ${error.message}`;
+}
+
+}
+}
 
 }

@@ -11,8 +11,6 @@ import { RecipeOverviewInfoModule } from './recipe-overview-info.module';
   ]
 })
 export class RecipeModule { 
-  offset: number;
   number: number;
-  totalResults: number;
   results:RecipeOverviewInfoModule[];
 }

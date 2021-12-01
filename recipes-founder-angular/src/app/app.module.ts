@@ -16,6 +16,10 @@ import { CreateRecipeComponent } from './components/recipe-components/create-rec
 import { RecipeDetailsComponent } from './components/recipe-components/recipe-details/recipe-details.component';
 import {MatIconModule} from '@angular/material/icon';
 import {MatChipsModule} from '@angular/material/chips';
+import { ToastrModule } from 'ngx-toastr';
+import { AlertService } from './services/alert.service';
+import { AppErrorHandler } from './handler-error/app-error-handler';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,9 +40,13 @@ import {MatChipsModule} from '@angular/material/chips';
     MatCardModule,
     MatDialogModule,
     MatIconModule,
-    MatChipsModule
+    MatChipsModule,
+    ToastrModule.forRoot(),
   ],
-  providers: [],
+  providers: [
+    AlertService,
+    AppErrorHandler
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

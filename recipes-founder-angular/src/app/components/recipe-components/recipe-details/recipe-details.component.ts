@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { IngredientModule } from 'src/app/modules/ingredients.module';
-import { InstructionModule } from 'src/app/modules/instruction.module';
 import { RecipeDetailsModule } from 'src/app/modules/recipe-details.module';
 import { StepImageModule } from 'src/app/modules/steps-image.module';
 import { RecipeService } from 'src/app/services/recipe.service';
@@ -28,7 +26,6 @@ export class RecipeDetailsComponent implements OnInit {
       params => {
         this.id = params;
         this.GetRecipeInformation();
-        this.SetTags();
         this.GetSteps();
       }
     );
@@ -39,29 +36,25 @@ export class RecipeDetailsComponent implements OnInit {
     this.recipService.GetStepsImage(this.id.id).subscribe(cr => {
       this.steps = (cr as StepImageModule).url;
       this.noSteps=false;
-      debugger
     });
   }
   private GetRecipeInformation(): void {
+    debugger
     this.recipService.GetRecipeInformation(this.id.id).subscribe(cr => {
       this.recipe = cr as RecipeDetailsModule;
+      if (this.recipe.vegan === true) {
+        this.tags.push("Vegan");
+      }
+      if (this.recipe.vegetarian === true) {
+        this.tags.push("Vegetarian");
+      }
+      if (this.recipe.glutenFree === true) {
+        this.tags.push("Gluten Free");
+      }
+      if (this.recipe.ketogenic === true) {
+        this.tags.push("Ketogenic");
+      }
     });
   }
-  private SetTags(): void {
-
-    if (this.recipe.vegan === true) {
-      this.tags.push("Vegan");
-    }
-    if (this.recipe.vegetarian === true) {
-      this.tags.push("Vegetarian");
-    }
-    if (this.recipe.glutenFree === true) {
-      this.tags.push("Gluten Free");
-    }
-    if (this.recipe.ketogenic === true) {
-      this.tags.push("Ketogenic");
-    }
-  }
-
 
 }
