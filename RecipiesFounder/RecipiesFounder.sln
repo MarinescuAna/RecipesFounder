@@ -5,11 +5,13 @@ VisualStudioVersion = 16.0.31410.357
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RecipiesFounder", "RecipiesFounder.csproj", "{88533F61-04F3-4B24-A688-01EF698EFE12}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecipesFounder.AplicationLogic.Repository", "..\RecipesFounder.AplicationLogic.Repository\RecipesFounder.AplicationLogic.Repository.csproj", "{A42EA951-DC8E-4D9D-8C84-0BF939370667}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RecipesFounder.AplicationLogic.Repository", "..\RecipesFounder.AplicationLogic.Repository\RecipesFounder.AplicationLogic.Repository.csproj", "{A42EA951-DC8E-4D9D-8C84-0BF939370667}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecipesFounder.AplicationLogic.Service", "..\RecipesFounder.AplicationLogic.Service\RecipesFounder.AplicationLogic.Service.csproj", "{917F514B-8519-4D8F-BC4E-A99A7AFFAA5E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RecipesFounder.AplicationLogic.Service", "..\RecipesFounder.AplicationLogic.Service\RecipesFounder.AplicationLogic.Service.csproj", "{917F514B-8519-4D8F-BC4E-A99A7AFFAA5E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccessLayer.Model", "..\DataAccessLayer.Model\DataAccessLayer.Model.csproj", "{9A8437A2-223C-4C05-90CB-9B97B6095260}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecipesFounder.DataAccessLayer.Domain", "..\RecipesFounder.DataAccessLayer.Domain\RecipesFounder.DataAccessLayer.Domain.csproj", "{5F91AF8F-9D5C-4663-B99D-506C789121C8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecipesFounder.DataAccessLayer.Repository", "..\RecipesFounder.DataAccessLayer.Repository\RecipesFounder.DataAccessLayer.Repository.csproj", "{629FD164-8339-4CFD-B923-BE9280BB0B55}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,10 +31,14 @@ Global
 		{917F514B-8519-4D8F-BC4E-A99A7AFFAA5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{917F514B-8519-4D8F-BC4E-A99A7AFFAA5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{917F514B-8519-4D8F-BC4E-A99A7AFFAA5E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9A8437A2-223C-4C05-90CB-9B97B6095260}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9A8437A2-223C-4C05-90CB-9B97B6095260}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9A8437A2-223C-4C05-90CB-9B97B6095260}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9A8437A2-223C-4C05-90CB-9B97B6095260}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5F91AF8F-9D5C-4663-B99D-506C789121C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F91AF8F-9D5C-4663-B99D-506C789121C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F91AF8F-9D5C-4663-B99D-506C789121C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5F91AF8F-9D5C-4663-B99D-506C789121C8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{629FD164-8339-4CFD-B923-BE9280BB0B55}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{629FD164-8339-4CFD-B923-BE9280BB0B55}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{629FD164-8339-4CFD-B923-BE9280BB0B55}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{629FD164-8339-4CFD-B923-BE9280BB0B55}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
