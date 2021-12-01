@@ -18,6 +18,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ApplicationLoggerLibrary\ApplicationLoggerLibrary.csproj" />
+    <ProjectReference Include="..\RecipesFounder.AplicationLogic.Repository\RecipesFounder.AplicationLogic.Repository.csproj" />
     <ProjectReference Include="..\RecipesFounder.DataAccessLayer.Repository\RecipesFounder.DataAccessLayer.Repository.csproj" />
   </ItemGroup>
 

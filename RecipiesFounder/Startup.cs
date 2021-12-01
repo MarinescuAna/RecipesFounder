@@ -1,3 +1,4 @@
+using ApplicationLoggerLibrary;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -7,6 +8,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using RecipesFounder.AplicationLogic.Repository.UnitOfWork;
 using RecipesFounder.DataAccessLayer.Repository;
 using System;
 using System.Collections.Generic;
@@ -27,6 +29,9 @@ namespace RecipiesFounder
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddSingleton<ILoggerService, LoggerService>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+
             services.AddDbContext<RecipeFounderDbContext>(options => options.UseSqlite(Configuration.GetConnectionString("cs")));
             services.AddControllers();
             services.AddSwaggerGen(options =>

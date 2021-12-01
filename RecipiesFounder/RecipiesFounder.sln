@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecipesFounder.DataAccessLa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecipesFounder.DataAccessLayer.Repository", "..\RecipesFounder.DataAccessLayer.Repository\RecipesFounder.DataAccessLayer.Repository.csproj", "{629FD164-8339-4CFD-B923-BE9280BB0B55}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApplicationLoggerLibrary", "..\ApplicationLoggerLibrary\ApplicationLoggerLibrary.csproj", "{2E5D9E72-7924-401C-A9B9-E14FDE52D94A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{629FD164-8339-4CFD-B923-BE9280BB0B55}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{629FD164-8339-4CFD-B923-BE9280BB0B55}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{629FD164-8339-4CFD-B923-BE9280BB0B55}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2E5D9E72-7924-401C-A9B9-E14FDE52D94A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E5D9E72-7924-401C-A9B9-E14FDE52D94A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2E5D9E72-7924-401C-A9B9-E14FDE52D94A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2E5D9E72-7924-401C-A9B9-E14FDE52D94A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
