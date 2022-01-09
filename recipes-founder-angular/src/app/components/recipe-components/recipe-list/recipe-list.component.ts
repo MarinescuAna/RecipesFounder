@@ -6,20 +6,20 @@ import { RecipeService } from 'src/app/services/recipe.service';
 @Component({
   selector: 'app-recipe-list',
   templateUrl: './recipe-list.component.html',
-  styleUrls:['./recipe-list.component.css']
+  styleUrls: ['./recipe-list.component.css']
 })
 export class RecipeListComponent implements OnInit {
-list = new RecipeModule();
+  list = new RecipeModule();
 
-constructor(private serviceRecipe: RecipeService) {
+  constructor(private serviceRecipe: RecipeService) {
     this.serviceRecipe.GetRecipes().subscribe(cr => {
-   this.list = cr as RecipeModule;
-   });
-}
- 
+      this.list = cr as RecipeModule;
+    });
+  }
 
-ngOnInit(): void {
 
-}
+  ngOnInit(): void {
+
+  }
 
 }

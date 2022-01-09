@@ -9,7 +9,7 @@
             <a routerLink="/home" routerLinkActive="active">Recipes</a>
           </li>
           <li>
-            <a routerLink="/myRecipe" routerLinkActive="active">My Recipes</a>
+            <a routerLink="/create" routerLinkActive="active">Create Recipes</a>
           </li>
           <li>
             <a routerLink="/shopping-list" routerLinkActive="active">Shopping List</a>
@@ -17,10 +17,10 @@
         </ul>
         <ul class="nav navbar-nav navbar-right">
          <ul class="nav navbar-nav">
-           <!-- <li><a href="#">My Account</a></li> -->
-           <li><a routerLink="/login" routerLinkActive="active">Login</a></li>
-           <li><a routerLink="/register" routerLinkActive="active">Register</a></li>
-           <!-- <li><a href="#">Logout</a></li> -->
+           <li><a href="/profile"  routerLinkActive="active" *ngIf="isLogged">My Account</a></li> 
+           <li><a routerLink="/login" routerLinkActive="active" *ngIf="!isLogged">Login</a></li>
+           <li><a routerLink="/register" routerLinkActive="active" *ngIf="!isLogged">Register</a></li>
+           <li><button class="btn btn-link link-button" (click)="doLoggOut()" *ngIf="isLogged">Logout</button></li>
          </ul>
         </ul>
       </div>

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RecipeCardComponent } from './components/recipe-components/recipe-card/recipe-card.component';
@@ -18,7 +18,22 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatChipsModule} from '@angular/material/chips';
 import { ToastrModule } from 'ngx-toastr';
 import { AlertService } from './services/alert.service';
-import { AppErrorHandler } from './handler-error/app-error-handler';
+import { RecipeEvaluationComponent } from './components/recipe-evaluation/recipe-evaluation.component';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import {FormsModule,ReactiveFormsModule } from "@angular/forms";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
+import { JwtModule } from '@auth0/angular-jwt';
+import { AuthconfigInterceptor } from './shared/authconfig.interceptor';
+import { UserProfileComponent } from './components/account/user-profile/user-profile.component';
+import { ListCommentsComponent } from './components/recipe-evaluation/comments/list-comments/list-comments.component';
+import { CommentComponent } from './components/recipe-evaluation/comments/comment/comment.component';
+
+export function tokenGetter() {
+  return localStorage.getItem('access_token');
+}
 
 @NgModule({
   declarations: [
@@ -31,21 +46,41 @@ import { AppErrorHandler } from './handler-error/app-error-handler';
     RegisterComponent,
     MyRecipeComponent,
     CreateRecipeComponent,
-    RecipeDetailsComponent
+    RecipeDetailsComponent,
+    RecipeEvaluationComponent,
+    UserProfileComponent,
+    ListCommentsComponent,
+    CommentComponent
   ],
   imports: [
     BrowserModule,
+    MatFormFieldModule,
     HttpClientModule,
     AppRoutingModule,
+    BrowserAnimationsModule,
     MatCardModule,
     MatDialogModule,
+    MatInputModule,
+    ReactiveFormsModule,
+    FormsModule,
     MatIconModule,
+    MatSnackBarModule,
     MatChipsModule,
+    MatTooltipModule,
     ToastrModule.forRoot(),
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter
+      }
+    }),
   ],
   providers: [
     AlertService,
-    AppErrorHandler
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthconfigInterceptor,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })

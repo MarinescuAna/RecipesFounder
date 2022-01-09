@@ -6,8 +6,16 @@ import { MyRecipeComponent } from './components/recipe-components/my-recipe/my-r
 import { RecipeListComponent } from './components/recipe-components/recipe-list/recipe-list.component';
 import { RecipeDetailsComponent } from './components/recipe-components/recipe-details/recipe-details.component';
 import { MainShoppingListComponent } from './components/shopping-list/main-shopping-list/main-shopping-list.component';
+import { UserProfileComponent } from './components/account/user-profile/user-profile.component';
+import { AuthGuard } from './shared/auth.guard';
+import { CreateRecipeComponent } from './components/recipe-components/create-recipe/create-recipe.component';
 
 const routes: Routes = [
+  {
+    path: 'profile',
+    component: UserProfileComponent,
+    canActivate: [AuthGuard]
+  },
   {
     path: 'home',
     component: RecipeListComponent
@@ -25,8 +33,8 @@ const routes: Routes = [
     component: MainShoppingListComponent
   },
   {
-    path:'myRecipe',
-    component: MyRecipeComponent
+    path:'create',
+    component: CreateRecipeComponent
   },
   {
     path:'details',

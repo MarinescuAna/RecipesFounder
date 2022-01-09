@@ -1,0 +1,30 @@
+.button-icons {
+    height: 50%;
+    width: 20%;
+  }
+  
+  .button-style {
+    width: 30%;
+  }
+  
+  .icons-position {
+    margin: 5px;
+  }
+  
+  .text-color {
+    color: grey;
+  }
+  
+  .field {
+    width: 400px;
+    margin: 5px;
+  }
+  
+  .footer-poz{
+    margin-top:10%;
+  }
+  .feedback{
+    background-color: azure;
+    font-weight: bold;
+    font-size: 15px; 
+  }

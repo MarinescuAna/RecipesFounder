@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace RecipesFounder.DataAccessLayer.Repository.Migrations
 {
-    public partial class CreateDb : Migration
+    public partial class First : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -30,6 +30,7 @@ namespace RecipesFounder.DataAccessLayer.Repository.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     UserID = table.Column<string>(nullable: true),
                     Description = table.Column<string>(nullable: true),
+                    Title = table.Column<string>(nullable: true),
                     CreationDate = table.Column<DateTime>(nullable: false),
                     ImageContent = table.Column<string>(nullable: true),
                     ImageName = table.Column<string>(nullable: true),
@@ -52,8 +53,8 @@ namespace RecipesFounder.DataAccessLayer.Repository.Migrations
                 {
                     CommentID = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    RecipeID = table.Column<int>(nullable: false),
-                    ExternalRecipe = table.Column<int>(nullable: false),
+                    RecipeID = table.Column<int>(nullable: true),
+                    ExternalRecipe = table.Column<int>(nullable: true),
                     Content = table.Column<string>(nullable: true),
                     UserID = table.Column<string>(nullable: true),
                     AddedDateTime = table.Column<DateTime>(nullable: false)
@@ -66,7 +67,7 @@ namespace RecipesFounder.DataAccessLayer.Repository.Migrations
                         column: x => x.RecipeID,
                         principalTable: "Recipes",
                         principalColumn: "RecipeID",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Comments_Users_UserID",
                         column: x => x.UserID,
@@ -81,8 +82,8 @@ namespace RecipesFounder.DataAccessLayer.Repository.Migrations
                 {
                     FavoriteID = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    RecipeID = table.Column<int>(nullable: false),
-                    ExternalRecipe = table.Column<int>(nullable: false),
+                    RecipeID = table.Column<int>(nullable: true),
+                    ExternalRecipe = table.Column<int>(nullable: true),
                     UserID = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
@@ -93,7 +94,7 @@ namespace RecipesFounder.DataAccessLayer.Repository.Migrations
                         column: x => x.RecipeID,
                         principalTable: "Recipes",
                         principalColumn: "RecipeID",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Favorites_Users_UserID",
                         column: x => x.UserID,
@@ -130,8 +131,8 @@ namespace RecipesFounder.DataAccessLayer.Repository.Migrations
                 {
                     RatingID = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    RecipeID = table.Column<int>(nullable: false),
-                    ExternalRecipe = table.Column<int>(nullable: false),
+                    RecipeID = table.Column<int>(nullable: true),
+                    ExternalRecipe = table.Column<int>(nullable: true),
                     Hearts = table.Column<int>(nullable: false),
                     Likes = table.Column<int>(nullable: false),
                     Unlikes = table.Column<int>(nullable: false)
@@ -144,7 +145,7 @@ namespace RecipesFounder.DataAccessLayer.Repository.Migrations
                         column: x => x.RecipeID,
                         principalTable: "Recipes",
                         principalColumn: "RecipeID",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(

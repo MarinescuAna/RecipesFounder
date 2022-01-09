@@ -1,1 +1,45 @@
-<p>create-recipe works!</p>
+<div class="register">
+    <div class="account-register">
+        <h1>Register</h1>
+        <form [formGroup]="formRegister" (ngSubmit)="onSubmit()" class="register-form">
+            <div class="form-group">
+                <input type="text" placeholder="User name" formControlName='fullname' class="form-control">
+            </div>
+            <div class="form-group">
+                <input type="text" placeholder="Email" formControlName='email' class="form-control">
+                <mat-error *ngIf="formRegister.controls['email'].hasError('pattern')">
+                    Please enter a valid email address!
+                </mat-error>
+            </div>
+            <div class="form-group">
+                <input type="text" placeholder="Confirm email" formControlName='emailConfirmation'
+                    class="form-control">
+                <mat-error *ngIf="formRegister.controls['emailConfirmation'].hasError('pattern')">
+                    Please enter a valid email address!
+                </mat-error>
+                <mat-error *ngIf="formRegister.value.email!=formRegister.value.emailConfirmation">
+                    Email addresses do not match!
+                </mat-error>
+            </div>
+            <div class="form-group">
+                <input type="password" placeholder="Password" class="form-control" formControlName='password'>
+            </div>
+            <div class="form-group">
+                <input type="password" placeholder="Confirm password" formControlName='passwordConfirmation'
+                    class="form-control">
+                <mat-error *ngIf="formRegister.value.password!=formRegister.value.passwordConfirmation">
+                    Passwords do not match!
+                </mat-error>
+            </div>
+            <button class="btn" (click)="onSubmit()" [disabled]="
+                formRegister.controls['password'].hasError('required') || 
+                formRegister.controls['fullname'].hasError('required') || 
+                formRegister.controls['email'].hasError('required') || 
+                formRegister.value.email!=formRegister.value.emailConfirmation || 
+                formRegister.value.password!=formRegister.value.passwordConfirmation ||
+                formRegister.controls['email'].hasError('pattern')
+                ">Register</button>
+                <p>Already have an account?<a routerLink="/login" routerLinkActive="active">Sign In</a></p>
+        </form>
+    </div>
+</div>

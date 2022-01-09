@@ -14,6 +14,7 @@ namespace RecipesFounder.DataAccessLayer.Domain.Domain
         [ForeignKey("User")]
         public string UserID { get; set; }
         public string Description { get; set; }
+        public string Title { get; set; }
         public DateTime CreationDate { get; set; }
         public string ImageContent { get; set; }
         public string ImageName { get; set; }

@@ -9,8 +9,8 @@ using RecipesFounder.DataAccessLayer.Repository;
 namespace RecipesFounder.DataAccessLayer.Repository.Migrations
 {
     [DbContext(typeof(RecipeFounderDbContext))]
-    [Migration("20211201084052_CreateDb")]
-    partial class CreateDb
+    [Migration("20211209164129_First")]
+    partial class First
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -30,10 +30,10 @@ namespace RecipesFounder.DataAccessLayer.Repository.Migrations
                     b.Property<string>("Content")
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("ExternalRecipe")
+                    b.Property<int?>("ExternalRecipe")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("RecipeID")
+                    b.Property<int?>("RecipeID")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("UserID")
@@ -54,10 +54,10 @@ namespace RecipesFounder.DataAccessLayer.Repository.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("ExternalRecipe")
+                    b.Property<int?>("ExternalRecipe")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("RecipeID")
+                    b.Property<int?>("RecipeID")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("UserID")
@@ -103,7 +103,7 @@ namespace RecipesFounder.DataAccessLayer.Repository.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("ExternalRecipe")
+                    b.Property<int?>("ExternalRecipe")
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("Hearts")
@@ -112,7 +112,7 @@ namespace RecipesFounder.DataAccessLayer.Repository.Migrations
                     b.Property<int>("Likes")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("RecipeID")
+                    b.Property<int?>("RecipeID")
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("Unlikes")
@@ -144,6 +144,9 @@ namespace RecipesFounder.DataAccessLayer.Repository.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("PreparationDescription")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Title")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("UserID")
@@ -185,9 +188,7 @@ namespace RecipesFounder.DataAccessLayer.Repository.Migrations
                 {
                     b.HasOne("RecipesFounder.DataAccessLayer.Domain.Domain.Recipe", "Recipe")
                         .WithMany("Comments")
-                        .HasForeignKey("RecipeID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("RecipeID");
 
                     b.HasOne("RecipesFounder.DataAccessLayer.Domain.Domain.User", "User")
                         .WithMany()
@@ -198,9 +199,7 @@ namespace RecipesFounder.DataAccessLayer.Repository.Migrations
                 {
                     b.HasOne("RecipesFounder.DataAccessLayer.Domain.Domain.Recipe", "Recipe")
                         .WithMany()
-                        .HasForeignKey("RecipeID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("RecipeID");
 
                     b.HasOne("RecipesFounder.DataAccessLayer.Domain.Domain.User", "User")
                         .WithMany("Favorites")
@@ -220,9 +219,7 @@ namespace RecipesFounder.DataAccessLayer.Repository.Migrations
                 {
                     b.HasOne("RecipesFounder.DataAccessLayer.Domain.Domain.Recipe", "Recipe")
                         .WithMany("Ratings")
-                        .HasForeignKey("RecipeID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("RecipeID");
                 });
 
             modelBuilder.Entity("RecipesFounder.DataAccessLayer.Domain.Domain.Recipe", b =>

@@ -1,0 +1,68 @@
+
+.register {
+    height: 66vh;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    }
+    .account-register {
+    width: 500px;
+    }
+    .form-control:focus {
+    box-shadow: none;
+    }
+    p a {
+    padding-left: 2px;
+    }
+    .account-register h1 {
+    font-size: 25px;
+    text-align: left;
+    color: green;
+    text-transform: uppercase;
+    font-weight: bold;
+    border-radius: 5px;
+    }
+    .register-form input {
+    width: 100%;
+    position: relative;
+    border-bottom: 1px solid green;
+    padding: 0;
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
+    box-shadow: none;
+    height: 63px;
+    border-radius: 0px;
+    }
+    .register-form {
+    background: #fff;
+    float: left;
+    width: 100%;
+    padding: 40px;
+    border-radius: 5px;
+
+    }
+    button.btn {
+    width: 100%;
+    background: green;
+    font-size: 20px;
+    padding: 11px;
+    color: #fff;
+    border: 0px;
+    margin: 10px 0px 20px;
+    }
+    .btn:hover{
+        color: #fff;
+        opacity: 0.8;
+    }
+    p {
+    float: left;
+    width: 100%;
+    text-align: center;
+    font-size: 14px;
+    }
+  
+    mat-error{
+        color:red;
+    }
