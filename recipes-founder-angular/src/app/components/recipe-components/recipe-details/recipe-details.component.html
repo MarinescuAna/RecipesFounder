@@ -9,9 +9,6 @@
             <p class="subtitle">
                 <mat-icon>restaurant</mat-icon> <strong> Servings:</strong> {{recipe.servings}}
             </p>
-            <p class="subtitle">
-                <mat-icon>thumb_up</mat-icon> <strong> Likes:</strong> {{recipe.aggregateLikes}}
-            </p>
             <div class="row chips">
                 <mat-chip-list cdkDropList cdkDropListOrientation="horizontal">
                     <mat-chip class="chip" cdkDrag *ngFor="let tag of tags">
@@ -43,6 +40,6 @@
            <img [src]="steps">
     </div>
     <div class="col-md-12">
-        <app-recipe-evaluation ></app-recipe-evaluation>
+        <app-recipe-evaluation [recipeId]="id" [isExternal]="true"></app-recipe-evaluation>
     </div>
 </div>

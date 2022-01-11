@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { RecipeDetailsModule } from 'src/app/modules/recipe-details.module';
 import { StepImageModule } from 'src/app/modules/steps-image.module';
 import { RecipeService } from 'src/app/services/recipe.service';
-
+import { ParamModule } from '../recipe-card/param.module';
 @Component({
   selector: 'app-recipe-details',
   templateUrl: './recipe-details.component.html',
@@ -11,10 +11,10 @@ import { RecipeService } from 'src/app/services/recipe.service';
     './recipe-details.component.css'
   ]
 })
-
 export class RecipeDetailsComponent implements OnInit {
 
-  private id: any;
+  isExternal:boolean;
+  id: any;
   tags: string[] = [];
   recipe = new RecipeDetailsModule();
   steps:string;
@@ -24,7 +24,9 @@ export class RecipeDetailsComponent implements OnInit {
   ngOnInit(): void {
     this.route.queryParams.subscribe(
       params => {
-        this.id = params;
+        debugger
+        this.id = (params as ParamModule).id;
+        this.isExternal=(params as ParamModule).isExternal;
         this.GetRecipeInformation();
         this.GetSteps();
       }
@@ -32,14 +34,12 @@ export class RecipeDetailsComponent implements OnInit {
   }
 
   private GetSteps(): void {
-    debugger
     this.recipService.GetStepsImage(this.id.id).subscribe(cr => {
       this.steps = (cr as StepImageModule).url;
       this.noSteps=false;
     });
   }
   private GetRecipeInformation(): void {
-    debugger
     this.recipService.GetRecipeInformation(this.id.id).subscribe(cr => {
       this.recipe = cr as RecipeDetailsModule;
       if (this.recipe.vegan === true) {
@@ -54,6 +54,9 @@ export class RecipeDetailsComponent implements OnInit {
       if (this.recipe.ketogenic === true) {
         this.tags.push("Ketogenic");
       }
+    },
+    err =>{
+      this.recipService.alertService.showError(err.message);
     });
   }
 

@@ -1,1 +1,13 @@
-<p>list-comments works!</p>
+<div class="row">
+        <app-comment class="col-md-4" *ngFor="let comment of comments" [comment]='comment'></app-comment>
+</div>
+<div>
+        <div class="form-group">
+                <form>
+                        <textarea type="text" placeholder="Type message..." rows="4" class="form-control"
+                                formControlName='message'></textarea>
+                        <button class="btn" (click)="onSubmit()"
+                                [disabled]="form.controls['message'].hasError('required')">Sent</button>
+                </form>
+        </div>
+</div>

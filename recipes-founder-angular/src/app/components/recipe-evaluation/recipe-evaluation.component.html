@@ -3,27 +3,16 @@
     
     <form>
       <div class="icons-position">
-        <button class="button-icons btn-link" *ngFor="let ratingId of ratingArr;index as i" [id]="'star_'+i"
+       <!--  <button class="button-icons btn-link" *ngFor="let ratingId of ratingArr;index as i" [id]="'star_'+i"
           (click)="onClick(i+1)" [style.color]="colors[i]" [matTooltip]="'ratingId+1'" matTooltipPosition="above">
           <mat-icon>
             {{showIcon(i)}}
           </mat-icon>
-        </button>
-        <p class="text-color">
-          Your rated <span>{{rating}}</span> / <span>{{starCount}}</span>
-        </p>
+        </button> -->
       </div>
-      <mat-form-field class="field">
-        <mat-label>
-          <mat-icon>create</mat-icon>Leave a comment
-        </mat-label>
-        <textarea matInput rows="5" placeholder="..." [formControl]='descriptionForm'></textarea>
-      </mat-form-field>
     </form>
 
   <div fxLayoutAlign="space-around center" class="footer-poz">
-    <button mat-stroked-button mat-dialog-close color="warn" class="button-style">Cancel</button>
-    <button mat-raised-button class="button-style" color="primary" (click)="submitFeedback()"
-      [disabled]="rating==0 && descriptionForm.hasError('required')">Submit</button>
+    <app-list-comments [recipeId]="recipeId" [isExternal]="isExternal"></app-list-comments>
   </div> 
  </div>

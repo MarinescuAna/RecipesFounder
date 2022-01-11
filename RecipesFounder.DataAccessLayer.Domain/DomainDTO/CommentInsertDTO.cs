@@ -8,7 +8,6 @@ namespace RecipesFounder.DataAccessLayer.Domain.DomainDTO
     {
         public string Content { get; set; }
         public int RecipeID { get; set; }
-        public string DatetimeAdded { get; set; }
         public bool IsExternal { get; set; }
     }
 }

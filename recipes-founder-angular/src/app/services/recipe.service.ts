@@ -11,10 +11,10 @@ export class RecipeService extends BaseExternalApiService{
   constructor(injector: Injector) {
     super(injector);
   }
-
+  
   public GetRecipes():any{ 
     let url=`${environment.urlApiSpoonacular}complexSearch?apiKey=${environment.apiSpoonacularKey}`;
-    return super.getMany<any>(url);
+    return super.getMany(url) ;
   }
 
   public GetRecipeInformation(id:string):any{

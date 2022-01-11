@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { CommentGet } from 'src/app/modules/comment-get.module';
 
 @Component({
   selector: 'app-comment',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./comment.component.css']
 })
 export class CommentComponent implements OnInit {
+
+  @Input() comment: CommentGet;
 
   constructor() { }
 

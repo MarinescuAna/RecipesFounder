@@ -13,14 +13,13 @@ import { IngredientModule } from './ingredients.module';
 export class RecipeDetailsModule { 
   title: string;
   image: string;
-  servings:number;
+  servings: number;
   readyInMinutes: number;
-  aggregateLikes:number;
-  healthScore:number;
-  glutenFree:boolean;
-  ketogenic:boolean;
-  vegan:boolean;
-  vegetarian:boolean;
-  summary:string;
+  healthScore:  number;
+  glutenFree: boolean;
+  ketogenic:  boolean;
+  vegan:  boolean;
+  vegetarian: boolean;
+  summary:  string;
   extendedIngredients: IngredientModule[];
 }

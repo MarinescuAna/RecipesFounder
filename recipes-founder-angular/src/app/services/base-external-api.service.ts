@@ -21,26 +21,13 @@ export class BaseExternalApiService {
     this.alertService=this.injector.get(AlertService);
    }
    
-   protected getMany<T>(url: string): Observable<T[]>{
-    return this.http.get<[]>(url,httpOptions)
-    .pipe(map((response) => {
-      return response as T[];
-    })).pipe(catchError((error: HttpErrorResponse)=>{
-      return this.handleError(error);
-    }));
+   protected getMany(url: string): any{
+    return this.http.get<[]>(url,httpOptions);
   }
-  protected getOne<T>(url: string):Observable<T>{
-      return this.http.get(url)
-        .pipe(map((response) => {
-          return response as T;
-        })).pipe(catchError((err: HttpErrorResponse) => {
-          return this.handleError(err);
-        }));
+  protected getOne(url: string):any{
+      return this.http.get(url);
    }
 
-protected handleError(error: any){
-  return throwError(error.message);
- }
  
 
 

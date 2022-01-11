@@ -41,21 +41,12 @@ export class BaseService {
     this.url=`${environment.baseApiUrl}${url}`;
    }
 
- /*   protected getAll<T>(): Observable<T[]>{
-     return this.getMany<T>('');
-   }
-
-   protected getMany<T>(path: string): Observable<T[]>{
+   protected getMany(path: string): any{
      const url=`${this.url}/${path}`;
-     return this.http.get<[]>(url,httpOptions)
-     .pipe(map((response) => {
-       return response as T[];
-     })).pipe(catchError((error: HttpErrorResponse)=>{
-       return this.handleError(error);
-     }));
+     return this.http.get<[]>(url,httpOptions);
    }
 
-   protected getOne<T>(url: string):Observable<T>{
+  /*  protected getOne<T>(url: string):Observable<T>{
       const path=`${this.url}/${url}`;
       return this.http.get(path)
         .pipe(map((response) => {

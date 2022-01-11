@@ -14,6 +14,9 @@ export class RecipeListComponent implements OnInit {
   constructor(private serviceRecipe: RecipeService) {
     this.serviceRecipe.GetRecipes().subscribe(cr => {
       this.list = cr as RecipeModule;
+    },
+    err =>{
+      serviceRecipe.alertService.showError(err.message);
     });
   }
 
