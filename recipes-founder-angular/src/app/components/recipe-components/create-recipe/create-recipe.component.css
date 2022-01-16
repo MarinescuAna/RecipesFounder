@@ -1,12 +1,14 @@
 
-.register {
+.create-recipe {
     height: 66vh;
     width: 100%;
+    margin-top: 5%;
     justify-content: center;
     align-items: center;
     display: flex;
+    margin-left: -5%;
     }
-    .account-register {
+    .account-create-recipe {
     width: 500px;
     }
     .form-control:focus {
@@ -15,7 +17,7 @@
     p a {
     padding-left: 2px;
     }
-    .account-register h1 {
+    .account-create-recipe h1 {
     font-size: 25px;
     text-align: left;
     color: green;
@@ -23,7 +25,7 @@
     font-weight: bold;
     border-radius: 5px;
     }
-    .register-form input {
+    .create-recipe-form-input {
     width: 100%;
     position: relative;
     border-bottom: 1px solid green;
@@ -35,11 +37,11 @@
     height: 63px;
     border-radius: 0px;
     }
-    .register-form {
+    .create-recipe-form {
     background: #fff;
     float: left;
-    width: 100%;
-    padding: 40px;
+    width: 150%;
+    padding: 28px;
     border-radius: 5px;
 
     }
@@ -63,6 +65,12 @@
     font-size: 14px;
     }
   
-    mat-error{
-        color:red;
+.form-middle{
+    width: 25% !important;
+}
+    .padding{
+        padding: 4%;
+    }
+    span{
+        color: gray;
     }

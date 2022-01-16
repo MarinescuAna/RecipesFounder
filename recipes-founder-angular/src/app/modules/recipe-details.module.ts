@@ -11,6 +11,7 @@ import { IngredientModule } from './ingredients.module';
   ]
 })
 export class RecipeDetailsModule { 
+  id:string;
   title: string;
   image: string;
   servings: number;

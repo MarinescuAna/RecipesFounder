@@ -1,6 +1,7 @@
+
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { UserRegisterModule } from 'src/app/modules/user-register.module';
+import { FormControl, FormGroup } from '@angular/forms';
+import { RecipeCreateModule } from 'src/app/modules/recipe-create.module';
 import { AuthService } from 'src/app/shared/auth.service';
 
 @Component({
@@ -9,27 +10,94 @@ import { AuthService } from 'src/app/shared/auth.service';
   styleUrls: ['./create-recipe.component.css']
 })
 export class CreateRecipeComponent implements OnInit {
-
-
-  private pattern =/^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i;
-  formRegister = new FormGroup({
-    email: new FormControl('',[Validators.required,Validators.pattern(this.pattern)]),
-    emailConfirmation: new FormControl('',[Validators.required,Validators.pattern(this.pattern)]),
-    password: new FormControl(''),
-    passwordConfirmation: new FormControl(''),
-    fullname: new FormControl(''),
+  allTags: string[] = [];
+  fileName: string;
+  imageOverview: string;
+  imageSteps: string;
+  ingredients: string[] = [];
+  formRecipe = new FormGroup({
+    title: new FormControl(''),
+    servings: new FormControl(''),
+    readyInMinutes: new FormControl(''),
+    healtyScore: new FormControl(''),
+    summary: new FormControl('')
   });
-  isDone=0;
-  constructor(private service:AuthService) { }
+
+  constructor(private service: AuthService) {
+  }
 
   ngOnInit(): void {
+    this.allTags = [
+      'GlutenFree',
+      'Ketogenic',
+      'Vegan',
+      'Vegetarian'
+    ];
+  }
+
+
+
+  remove(tag: string): void {
+    const index = this.allTags.indexOf(tag);
+
+    if (index >= 0) {
+      this.allTags.splice(index, 1);
+    }
+  }
+  addIngredient(ing: HTMLInputElement) {
+    if (ing.value.trim() != '') {
+      this.ingredients.push(ing.value);
+    }
   }
 
   onSubmit(): void {
-    this.isDone++;
-    if (this.isDone==1) {
-      this.service.register(new UserRegisterModule(this.formRegister.value.email,this.formRegister.value.password,this.formRegister.value.fullname));
-      this.isDone=0;
+    let recipe = new RecipeCreateModule();
+    recipe.extendedIngredients = this.ingredients;
+    recipe.image = this.imageOverview;
+    recipe.imageSteps = this.imageSteps;
+    recipe.title = this.formRecipe.value.title;
+    recipe.servings = this.formRecipe.value.servings;
+    recipe.readyInMinutes = this.formRecipe.value.readyInMinutes;
+    recipe.healthScore = this.formRecipe.value.healtyScore;
+    recipe.vegan = false;
+    recipe.glutenFree = false;
+    recipe.ketogenic = false;
+    recipe.vegetarian = false;
+    this.allTags.forEach(element => {
+      if (element == 'Vegan') {
+        recipe.vegan = true;
+      }
+      if (element == 'GlutenFree') {
+        recipe.glutenFree = true;
+      }
+      if (element == 'Ketogenic') {
+        recipe.ketogenic = true;
+      }
+      if (element == 'Vegetarian') {
+        recipe.vegetarian = true;
+      }
+    });
+    recipe.summary = this.formRecipe.value.summary;
+  }
+
+  onFileChange(event, isSteps: boolean): void {
+    debugger
+    const reader = new FileReader();
+    if (event.target.files && event.target.files.length) {
+      this.fileName = event.target.files[0].name;
+      if (this.fileName.split('.')[1] === 'jpg' || this.fileName.split('.')[1] === 'png' || this.fileName.split('.')[1] === 'jpeg') {
+        const [file] = event.target.files;
+        reader.readAsDataURL(file);
+        reader.onload = () => {
+          if (isSteps) {
+            this.imageSteps = 'data:image/' + this.fileName.split('.')[1] + ';base64,' + reader.result?.toString().split(',')[1];
+          } else {
+            this.imageOverview = 'data:image/' + this.fileName.split('.')[1] + ';base64,' + reader.result?.toString().split(',')[1];
+          }
+        };
+      } else {
+        this.service.alertService.showError('Invalid file! You can only send jpg, png and jpeg files!');
+      }
     }
   }
 }

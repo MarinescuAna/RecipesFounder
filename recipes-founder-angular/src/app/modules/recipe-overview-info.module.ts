@@ -13,4 +13,5 @@ export class RecipeOverviewInfoModule {
   id:string;
   title: string;
   image: string;
+  isExternal:boolean=true;
 }

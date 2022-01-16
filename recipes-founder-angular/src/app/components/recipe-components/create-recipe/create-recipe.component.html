@@ -1,45 +1,69 @@
-<div class="register">
-    <div class="account-register">
-        <h1>Register</h1>
-        <form [formGroup]="formRegister" (ngSubmit)="onSubmit()" class="register-form">
+<div class="create-recipe">
+    <div class="account-create-recipe">
+        <h1>Create recipe</h1>
+        <form [formGroup]="formRecipe" (ngSubmit)="onSubmit()" class="create-recipe-form">
             <div class="form-group">
-                <input type="text" placeholder="User name" formControlName='fullname' class="form-control">
+                <input type="text" placeholder="Title" formControlName='title'
+                    class="form-control create-recipe-form-input">
+            </div>
+            <div fxLayout="row" fxLayoutAlign="center center">
+                <div class="form-group padding" >
+                    <span> Upload an image with the recipe</span>
+                    <input type="file" (change)="onFileChange($event,false)" required>
+                </div>
+                <div class="form-group padding">
+                    <span> Upload an image with the steps</span>
+                    <input type="file" (change)="onFileChange($event,true)" required>
+                </div>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="space-between center">
+                <div class="form-group form-middle">
+                    <input type="number" placeholder="Servings" formControlName='servings'
+                        class="form-control create-recipe-form-input">
+                </div>
+                <div class="form-group form-middle">
+                    <input type="number" placeholder="ReadyInMinutes" formControlName='readyInMinutes'
+                        class="form-control create-recipe-form-input">
+                </div>
+                <div class="form-group form-middle">
+                    <input type="number" placeholder="HealtyScore" formControlName='healtyScore'
+                        class="form-control create-recipe-form-input">
+                </div>
+            </div>
+            <div class="form-group padding">
+                <span>Tags selection</span>
+            <br>
+                <mat-form-field>
+                    <mat-chip-list>
+                        <div fxLayout="row" fxLayoutAlign="space-between center">
+                            <mat-chip style="background-color: lightgreen;" *ngFor="let tag of allTags"
+                                (removed)="remove(tag)">
+                                {{tag}}
+                                <button matChipRemove>
+                                    <mat-icon>cancel</mat-icon>
+                                </button>
+                            </mat-chip>
+                        </div>
+                    </mat-chip-list>
+                </mat-form-field>
             </div>
             <div class="form-group">
-                <input type="text" placeholder="Email" formControlName='email' class="form-control">
-                <mat-error *ngIf="formRegister.controls['email'].hasError('pattern')">
-                    Please enter a valid email address!
-                </mat-error>
+                <textarea row="18" maxlength="250" placeholder="Summary" formControlName='summary'
+                    class="form-control create-recipe-form-input"></textarea>
             </div>
+            
             <div class="form-group">
-                <input type="text" placeholder="Confirm email" formControlName='emailConfirmation'
-                    class="form-control">
-                <mat-error *ngIf="formRegister.controls['emailConfirmation'].hasError('pattern')">
-                    Please enter a valid email address!
-                </mat-error>
-                <mat-error *ngIf="formRegister.value.email!=formRegister.value.emailConfirmation">
-                    Email addresses do not match!
-                </mat-error>
+                <div fxLayout="column" fxLayoutAlign="space-between center">
+                <span>Ingredients</span>
+                <ul ><li *ngFor="let ing of ingredients">{{ing}}</li></ul>
             </div>
-            <div class="form-group">
-                <input type="password" placeholder="Password" class="form-control" formControlName='password'>
+                <div fxLayout="row" fxLayoutAlign="space-between center">
+                <input type="text"  placeholder="Ex: 123ml water"
+                    class="form-control create-recipe-form-input" #ingredient>
+                <button mat-icon-button (click)="addIngredient(ingredient)"><mat-icon>add</mat-icon></button>
+                </div>
             </div>
-            <div class="form-group">
-                <input type="password" placeholder="Confirm password" formControlName='passwordConfirmation'
-                    class="form-control">
-                <mat-error *ngIf="formRegister.value.password!=formRegister.value.passwordConfirmation">
-                    Passwords do not match!
-                </mat-error>
-            </div>
-            <button class="btn" (click)="onSubmit()" [disabled]="
-                formRegister.controls['password'].hasError('required') || 
-                formRegister.controls['fullname'].hasError('required') || 
-                formRegister.controls['email'].hasError('required') || 
-                formRegister.value.email!=formRegister.value.emailConfirmation || 
-                formRegister.value.password!=formRegister.value.passwordConfirmation ||
-                formRegister.controls['email'].hasError('pattern')
-                ">Register</button>
-                <p>Already have an account?<a routerLink="/login" routerLinkActive="active">Sign In</a></p>
+            <button class="btn" (click)="onSubmit()">Create</button>
         </form>
     </div>
 </div>

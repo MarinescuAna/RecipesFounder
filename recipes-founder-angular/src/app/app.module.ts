@@ -30,6 +30,11 @@ import { AuthconfigInterceptor } from './shared/authconfig.interceptor';
 import { UserProfileComponent } from './components/account/user-profile/user-profile.component';
 import { ListCommentsComponent } from './components/recipe-evaluation/comments/list-comments/list-comments.component';
 import { CommentComponent } from './components/recipe-evaluation/comments/comment/comment.component';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import {MatSelectModule} from '@angular/material/select';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import {MatButtonModule} from '@angular/material/button';
 
 export function tokenGetter() {
   return localStorage.getItem('access_token');
@@ -59,14 +64,19 @@ export function tokenGetter() {
     AppRoutingModule,
     BrowserAnimationsModule,
     MatCardModule,
+    FlexLayoutModule,
+    MatSelectModule,
     MatDialogModule,
     MatInputModule,
     ReactiveFormsModule,
     FormsModule,
+    MatButtonModule,
+    MatSlideToggleModule,
     MatIconModule,
     MatSnackBarModule,
     MatChipsModule,
     MatTooltipModule,
+    MatAutocompleteModule,
     ToastrModule.forRoot(),
     JwtModule.forRoot({
       config: {

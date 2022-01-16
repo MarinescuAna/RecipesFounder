@@ -9,6 +9,9 @@
             <p class="subtitle">
                 <mat-icon>restaurant</mat-icon> <strong> Servings:</strong> {{recipe.servings}}
             </p>
+            <p class="subtitle">
+                <mat-icon>health_and_safety</mat-icon> <strong> Health Score:</strong> {{recipe.healthScore}}
+            </p>
             <div class="row chips">
                 <mat-chip-list cdkDropList cdkDropListOrientation="horizontal">
                     <mat-chip class="chip" cdkDrag *ngFor="let tag of tags">
@@ -37,9 +40,9 @@
         </ul>
     </div>
     <div class="col-md-12">
-           <img [src]="steps">
+           <img [src]="recipe.imageSteps">
     </div>
-    <div class="col-md-12">
+<!--     <div class="col-md-12">
         <app-recipe-evaluation [recipeId]="id" [isExternal]="true"></app-recipe-evaluation>
-    </div>
+    </div> -->
 </div>

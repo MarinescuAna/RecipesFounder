@@ -12,17 +12,19 @@ export class RecipeListComponent implements OnInit {
   list = new RecipeModule();
 
   constructor(private serviceRecipe: RecipeService) {
-    this.serviceRecipe.GetRecipes().subscribe(cr => {
-      this.list = cr as RecipeModule;
-    },
-    err =>{
-      serviceRecipe.alertService.showError(err.message);
-    });
   }
 
 
   ngOnInit(): void {
-
+    this.serviceRecipe.GetRecipes().subscribe(cr => {
+      this.list = cr as RecipeModule;
+      return this.list.results.forEach(element => {
+        element.isExternal=true
+      });
+    },
+      err => {
+        this.serviceRecipe.alertService.showError(err.message);
+      });;
   }
 
 }

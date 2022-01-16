@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { RecipeDetailsModule } from 'src/app/modules/recipe-details.module';
-import { StepImageModule } from 'src/app/modules/steps-image.module';
-import { RecipeService } from 'src/app/services/recipe.service';
-import { ParamModule } from '../recipe-card/param.module';
+import { RecipeFullDataModule } from 'src/app/modules/recipe-full-data.module';
+import { RecipeOverviewInfoModule } from 'src/app/modules/recipe-overview-info.module';
+import { RecipeService, StepImageModule } from 'src/app/services/recipe.service';
+
 @Component({
   selector: 'app-recipe-details',
   templateUrl: './recipe-details.component.html',
@@ -13,51 +14,68 @@ import { ParamModule } from '../recipe-card/param.module';
 })
 export class RecipeDetailsComponent implements OnInit {
 
-  isExternal:boolean;
-  id: any;
+  recipe= new RecipeFullDataModule();
+  recipeOverviewInfoModule: RecipeOverviewInfoModule;
   tags: string[] = [];
-  recipe = new RecipeDetailsModule();
-  steps:string;
-  noSteps=true;
+  noSteps = false;
   constructor(private route: ActivatedRoute, private recipService: RecipeService) { }
 
   ngOnInit(): void {
     this.route.queryParams.subscribe(
       params => {
-        debugger
-        this.id = (params as ParamModule).id;
-        this.isExternal=(params as ParamModule).isExternal;
-        this.GetRecipeInformation();
-        this.GetSteps();
+        this.recipeOverviewInfoModule = params as RecipeOverviewInfoModule;
+        if (this.recipeOverviewInfoModule.isExternal) {
+          this.GetRecipeInformation();
+        }
       }
     );
   }
 
-  private GetSteps(): void {
-    this.recipService.GetStepsImage(this.id.id).subscribe(cr => {
-      this.steps = (cr as StepImageModule).url;
-      this.noSteps=false;
-    });
-  }
+
   private GetRecipeInformation(): void {
-    this.recipService.GetRecipeInformation(this.id.id).subscribe(cr => {
-      this.recipe = cr as RecipeDetailsModule;
-      if (this.recipe.vegan === true) {
-        this.tags.push("Vegan");
-      }
-      if (this.recipe.vegetarian === true) {
-        this.tags.push("Vegetarian");
-      }
-      if (this.recipe.glutenFree === true) {
-        this.tags.push("Gluten Free");
-      }
-      if (this.recipe.ketogenic === true) {
-        this.tags.push("Ketogenic");
-      }
+    this.recipService.GetRecipeInformation(this.recipeOverviewInfoModule.id).subscribe(cr => {
+      this.SetRecipeDetailsModule(cr as RecipeDetailsModule);
+      this.SetTags();
     },
-    err =>{
-      this.recipService.alertService.showError(err.message);
+      err => {
+        this.recipService.alertService.showError(err.message);
+      });
+    this.recipe.createdBy = '';
+    this.recipService.GetStepsImage(this.recipeOverviewInfoModule.id).subscribe(cr => {
+      this.recipe.imageSteps = (cr as StepImageModule).url;
     });
   }
 
+  private SetRecipeDetailsModule(recipe: RecipeDetailsModule): void {
+    this.recipe.id = recipe.id;
+    this.recipe.title = recipe.title;
+    this.recipe.image = recipe.image;
+    this.recipe.servings = recipe.servings;
+    this.recipe.readyInMinutes = recipe.readyInMinutes;
+    this.recipe.healthScore = recipe.healthScore;
+    this.recipe.glutenFree = recipe.glutenFree;
+    this.recipe.ketogenic = recipe.ketogenic;
+    this.recipe.vegan = recipe.vegan;
+    this.recipe.vegetarian = recipe.vegetarian;
+    this.recipe.summary = recipe.summary;
+    this.recipe.extendedIngredients = recipe.extendedIngredients;
+    if(this.recipe.extendedIngredients==null || this.recipe.extendedIngredients.length==0){
+      this.noSteps=true;
+    }
+  }
+
+  private SetTags(): void {
+    if (this.recipe.vegan === true) {
+      this.tags.push("Vegan");
+    }
+    if (this.recipe.vegetarian === true) {
+      this.tags.push("Vegetarian");
+    }
+    if (this.recipe.glutenFree === true) {
+      this.tags.push("Gluten Free");
+    }
+    if (this.recipe.ketogenic === true) {
+      this.tags.push("Ketogenic");
+    }
+  }
 }
