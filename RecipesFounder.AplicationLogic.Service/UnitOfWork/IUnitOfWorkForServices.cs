@@ -7,5 +7,6 @@ namespace RecipesFounder.AplicationLogic.Service.UnitOfWork
         IUserService UserService { get; }
         ICommentService CommentService { get; }
         IRatingService RatingService { get; }
+        IRecipeService RecipeService { get; }
     }
 }

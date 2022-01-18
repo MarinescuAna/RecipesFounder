@@ -12,10 +12,6 @@ import { CommonModule } from '@angular/common';
 })
 
 export class TokenModule {
-  public accessToken:string;
-  public accessTokenExp:string;
-  constructor(@Inject(String) accessToken:string, @Inject(String) accessTokenExp:string){
-    this.accessToken=accessToken;
-    this.accessTokenExp=accessTokenExp;
-  }
+  public AccessToken:string;
+  public AccessTokenExp:string;
 }

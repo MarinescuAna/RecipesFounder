@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace RecipesFounder.AplicationLogic.Service.Interface
 {
-    public interface ICommentService
+    public interface IRecipeService
     {
-        Task<bool> InsertCommentAsync(Comment comment);
-        Task<List<Comment>> GetComments(string recipeId, bool isExtern);
+        Task<bool> CreateRecipeAsync(Recipe recipe);
+        Task<List<Recipe>> GetAllRecipesByUserEmailAsync(string email);
+        Task<List<Recipe>> GetAllRecipesByIsPublicFlagAsync();
     }
 }

@@ -1,5 +1,6 @@
 import { Injectable, Injector } from '@angular/core';
 import { environment } from 'src/environments/environment';
+import { RecipeCreateModule } from '../modules/recipe-create.module';
 import { BaseExternalApiService } from './base-external-api.service';
 
 export class StepImageModule {
@@ -11,8 +12,9 @@ export class StepImageModule {
 })
 
 export class RecipeService extends BaseExternalApiService {
+  
   constructor(injector: Injector) {
-    super(injector);
+    super(injector,'Recipe');
   }
 
   public GetRecipes(): any {
@@ -28,5 +30,10 @@ export class RecipeService extends BaseExternalApiService {
   public GetStepsImage(id: string): any {
     let url = `${environment.urlApiSpoonacular}${id}/card?backgroundColor=f0ffff&apiKey=${environment.apiSpoonacularKey}`;
     return super.getOne(url);
+  }
+
+  public CreateRecipe(recipe:RecipeCreateModule):any{
+    let url = `${environment.baseApiUrl}${this.controllerName}/CreateRecipe`;
+    return super.add(recipe,url);
   }
 }

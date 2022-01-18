@@ -7,12 +7,13 @@ using System.Text;
 
 namespace RecipesFounder.AplicationLogic.Service.UnitOfWork
 {
-    public class UnitOfWorkForServices: IUnitOfWorkForServices
+    public class UnitOfWorkForServices : IUnitOfWorkForServices
     {
         private readonly IUnitOfWork _unitOfWork;
         private IUserService _userService;
         private ICommentService _commentService;
         private IRatingService _ratingService;
+        private IRecipeService _recipeService;
         public UnitOfWorkForServices(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
@@ -51,6 +52,19 @@ namespace RecipesFounder.AplicationLogic.Service.UnitOfWork
                 }
 
                 return _userService;
+            }
+        }
+
+        public IRecipeService RecipeService
+        {
+            get
+            {
+                if (_recipeService == null)
+                {
+                    _recipeService = new RecipeServiceImpl(_unitOfWork);
+                }
+
+                return _recipeService;
             }
         }
     }

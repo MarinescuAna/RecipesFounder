@@ -52,6 +52,7 @@ namespace RecipiesFounder.Controllers
 
             if (await _unitOfWorkForServices.UserService.UpdateUserInfoAsync(user))
             {
+
                 return Ok(new JObject()
                 {
                     {"AccessToken", jWToken.accessToken},

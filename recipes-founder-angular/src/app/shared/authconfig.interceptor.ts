@@ -12,7 +12,7 @@ export class AuthconfigInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<any>, next: HttpHandler) {
 
-    const authToken = localStorage.getItem('access_token');
+    const authToken=null; //localStorage.getItem('access_token');
     if (authToken != null) {
       request = request.clone({
         setHeaders: {

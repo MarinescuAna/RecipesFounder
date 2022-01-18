@@ -22,7 +22,7 @@ namespace RecipiesFounder.Controllers
         }
         protected string ExtractEmailFromJWT()
         {
-            return _httpContextAccessor.HttpContext.User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Email)?.Value;
+            return HttpContext.User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Email)?.Value;
         }
 
     }

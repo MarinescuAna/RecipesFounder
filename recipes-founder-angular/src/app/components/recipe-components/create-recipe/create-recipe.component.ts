@@ -2,6 +2,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { RecipeCreateModule } from 'src/app/modules/recipe-create.module';
+import { RecipeService } from 'src/app/services/recipe.service';
 import { AuthService } from 'src/app/shared/auth.service';
 
 @Component({
@@ -20,10 +21,11 @@ export class CreateRecipeComponent implements OnInit {
     servings: new FormControl(''),
     readyInMinutes: new FormControl(''),
     healtyScore: new FormControl(''),
-    summary: new FormControl('')
+    summary: new FormControl(''),
+    preparationDescription:new FormControl('')
   });
 
-  constructor(private service: AuthService) {
+  constructor(private service: RecipeService, private authService:AuthService) {
   }
 
   ngOnInit(): void {
@@ -35,8 +37,6 @@ export class CreateRecipeComponent implements OnInit {
     ];
   }
 
-
-
   remove(tag: string): void {
     const index = this.allTags.indexOf(tag);
 
@@ -44,6 +44,7 @@ export class CreateRecipeComponent implements OnInit {
       this.allTags.splice(index, 1);
     }
   }
+
   addIngredient(ing: HTMLInputElement) {
     if (ing.value.trim() != '') {
       this.ingredients.push(ing.value);
@@ -63,6 +64,7 @@ export class CreateRecipeComponent implements OnInit {
     recipe.glutenFree = false;
     recipe.ketogenic = false;
     recipe.vegetarian = false;
+    recipe.preparationDescription=this.formRecipe.value.preparationDescription;
     this.allTags.forEach(element => {
       if (element == 'Vegan') {
         recipe.vegan = true;
@@ -77,11 +79,20 @@ export class CreateRecipeComponent implements OnInit {
         recipe.vegetarian = true;
       }
     });
-    recipe.summary = this.formRecipe.value.summary;
+    recipe.summary = this.formRecipe.value.summary;debugger
+    recipe.email=this.authService.decodeJWToken('unique_name')
+
+    this.service.CreateRecipe(recipe).subscribe(
+      cr => {
+        this.service.alertService.showSucces("Success!");
+      },
+      err=>{
+        this.service.alertService.showError(err.message);
+      }
+    );
   }
 
   onFileChange(event, isSteps: boolean): void {
-    debugger
     const reader = new FileReader();
     if (event.target.files && event.target.files.length) {
       this.fileName = event.target.files[0].name;

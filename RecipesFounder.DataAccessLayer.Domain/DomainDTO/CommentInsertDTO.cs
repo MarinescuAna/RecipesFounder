@@ -7,7 +7,7 @@ namespace RecipesFounder.DataAccessLayer.Domain.DomainDTO
     public class CommentInsertDTO
     {
         public string Content { get; set; }
-        public int RecipeID { get; set; }
+        public string RecipeID { get; set; }
         public bool IsExternal { get; set; }
     }
 }

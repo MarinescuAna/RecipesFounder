@@ -25,7 +25,7 @@ namespace RecipesFounder.AplicationLogic.Service.Implementation
 
             return await _unitOfWork.Commit() > 0;
         }
-        public async Task<Rating> GetRatingAsync(int recipeId, bool isExtern) =>
+        public async Task<Rating> GetRatingAsync(string recipeId, bool isExtern) =>
             await _unitOfWork.RatingRepo.GetItem(u => (isExtern && u.ExternalRecipe == recipeId) || (!isExtern && u.RecipeID == recipeId));
     }
 }

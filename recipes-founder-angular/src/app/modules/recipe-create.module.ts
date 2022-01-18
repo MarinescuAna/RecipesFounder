@@ -10,6 +10,8 @@ export class RecipeCreateModule {
     vegetarian: boolean;
     summary: string;
     imageSteps: string;
+    preparationDescription:string;
     extendedIngredients: string[];
+    email:string;
 }
 

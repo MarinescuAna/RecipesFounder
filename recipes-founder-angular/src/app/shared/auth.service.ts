@@ -15,8 +15,8 @@ export class AuthService extends BaseService {
   }
 
   private setLocalStorage(token: TokenModule): void {
-    localStorage.setItem('access_token', token.accessToken);
-    localStorage.setItem('refresh_token', token.accessTokenExp);
+    localStorage.setItem('access_token', token.AccessToken);
+    localStorage.setItem('refresh_token', token.AccessTokenExp);
   }
 
 /*   public UpdateUserInfo(data:any):any{
@@ -43,7 +43,10 @@ export class AuthService extends BaseService {
 
   getToken(): any {
     if (localStorage.getItem('access_token') !== null) {
-      return new  TokenModule(localStorage.getItem('access_token')!,localStorage.getItem('refresh_token')!);;
+      let token = new TokenModule;
+      token.AccessToken=localStorage.getItem('access_token')!;
+       token.AccessTokenExp=localStorage.getItem('refresh_token')!; 
+      return token;
     }
     return null;
   }
@@ -77,12 +80,14 @@ export class AuthService extends BaseService {
     super
     .post('Login', userCredentials)
     .subscribe(login => {
+      debugger
         this.setLocalStorage(login as TokenModule);
         localStorage.setItem('is_logged', 'true');
         this.route.navigateByUrl('/home');
         this.alertService.showSucces("Success!");
     },
     err => {
+      debugger
       console.log(err);
       this.alertService.showError(err.message);
     });

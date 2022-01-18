@@ -1,7 +1,7 @@
 <div class="create-recipe">
     <div class="account-create-recipe">
         <h1>Create recipe</h1>
-        <form [formGroup]="formRecipe" (ngSubmit)="onSubmit()" class="create-recipe-form">
+        <form [formGroup]="formRecipe" class="create-recipe-form">
             <div class="form-group">
                 <input type="text" placeholder="Title" formControlName='title'
                     class="form-control create-recipe-form-input">
@@ -48,10 +48,13 @@
                 </mat-form-field>
             </div>
             <div class="form-group">
-                <textarea row="18" maxlength="250" placeholder="Summary" formControlName='summary'
+                <textarea row="18" placeholder="Summary" formControlName='summary'
                     class="form-control create-recipe-form-input"></textarea>
             </div>
-            
+            <div class="form-group">
+                <textarea row="18" placeholder="Preparation description" formControlName='preparationDescription'
+                    class="form-control create-recipe-form-input"></textarea>
+            </div>
             <div class="form-group">
                 <div fxLayout="column" fxLayoutAlign="space-between center">
                 <span>Ingredients</span>
@@ -60,7 +63,7 @@
                 <div fxLayout="row" fxLayoutAlign="space-between center">
                 <input type="text"  placeholder="Ex: 123ml water"
                     class="form-control create-recipe-form-input" #ingredient>
-                <button mat-icon-button (click)="addIngredient(ingredient)"><mat-icon>add</mat-icon></button>
+                <button mat-icon-button (click)="addIngredient(ingredient)" ><mat-icon>add</mat-icon></button>
                 </div>
             </div>
             <button class="btn" (click)="onSubmit()">Create</button>

@@ -21,7 +21,7 @@ namespace RecipiesFounder.Controllers
         }
         [HttpPost]
         [Route("/api/Comment/InsertComment")]
-        [Authorize]
+        //TODO [Authorize]
         public async Task<IActionResult> InsertComment(CommentInsertDTO commentInsertDTO)
         {
             if (commentInsertDTO == null)
@@ -32,8 +32,8 @@ namespace RecipiesFounder.Controllers
             if (await _unitOfWorkForServices.CommentService.InsertCommentAsync(new Comment { 
                 AddedDateTime=DateTime.Now,
                 Content=commentInsertDTO.Content,
-                ExternalRecipe=commentInsertDTO.IsExternal?commentInsertDTO.RecipeID:0,
-                RecipeID=!commentInsertDTO.IsExternal?commentInsertDTO.RecipeID:0,
+                ExternalRecipe=commentInsertDTO.IsExternal?commentInsertDTO.RecipeID:string.Empty,
+                RecipeID=!commentInsertDTO.IsExternal?commentInsertDTO.RecipeID:string.Empty,
                 UserID=ExtractEmailFromJWT()
             }))
             {
@@ -53,7 +53,7 @@ namespace RecipiesFounder.Controllers
             }
 
             var split = recipeDetails.Split("#");
-            var list = await _unitOfWorkForServices.CommentService.GetComments(int.Parse(split[0]), bool.Parse(split[1]));
+            var list = await _unitOfWorkForServices.CommentService.GetComments(split[0], bool.Parse(split[1]));
             if (list == null)
             {
                 return StatusCode(ErrorsAndMessages.Number_400, ErrorsAndMessages.SomethingWentWrong);

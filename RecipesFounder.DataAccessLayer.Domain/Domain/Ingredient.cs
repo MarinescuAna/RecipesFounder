@@ -12,10 +12,8 @@ namespace RecipesFounder.DataAccessLayer.Domain.Domain
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int IngredientID { get; set; }
         public string Name { get; set; }
-        public string Unit { get; set; }
-        public float Amount { get; set; }
         [ForeignKey("Recipe")]
-        public int RecipeID { get; set; }
+        public string RecipeID { get; set; }
         public Recipe Recipe { get; set; }
     }
 }

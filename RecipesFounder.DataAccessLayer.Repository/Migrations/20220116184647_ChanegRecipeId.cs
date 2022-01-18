@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace RecipesFounder.DataAccessLayer.Repository.Migrations
 {
-    public partial class First : Migration
+    public partial class ChanegRecipeId : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -26,14 +26,21 @@ namespace RecipesFounder.DataAccessLayer.Repository.Migrations
                 name: "Recipes",
                 columns: table => new
                 {
-                    RecipeID = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
+                    RecipeID = table.Column<string>(nullable: false),
                     UserID = table.Column<string>(nullable: true),
-                    Description = table.Column<string>(nullable: true),
+                    Summary = table.Column<string>(nullable: true),
                     Title = table.Column<string>(nullable: true),
                     CreationDate = table.Column<DateTime>(nullable: false),
-                    ImageContent = table.Column<string>(nullable: true),
-                    ImageName = table.Column<string>(nullable: true),
+                    Servings = table.Column<int>(nullable: false),
+                    ReadyInMinutes = table.Column<int>(nullable: false),
+                    HealtyScore = table.Column<int>(nullable: false),
+                    GlutenFree = table.Column<bool>(nullable: false),
+                    Ketogenic = table.Column<bool>(nullable: false),
+                    Vegetarian = table.Column<bool>(nullable: false),
+                    Vegan = table.Column<bool>(nullable: false),
+                    IsPublic = table.Column<bool>(nullable: false),
+                    Image = table.Column<string>(nullable: true),
+                    ImageSteps = table.Column<string>(nullable: true),
                     PreparationDescription = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
@@ -53,8 +60,8 @@ namespace RecipesFounder.DataAccessLayer.Repository.Migrations
                 {
                     CommentID = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    RecipeID = table.Column<int>(nullable: true),
-                    ExternalRecipe = table.Column<int>(nullable: true),
+                    RecipeID = table.Column<string>(nullable: true),
+                    ExternalRecipe = table.Column<string>(nullable: true),
                     Content = table.Column<string>(nullable: true),
                     UserID = table.Column<string>(nullable: true),
                     AddedDateTime = table.Column<DateTime>(nullable: false)
@@ -82,8 +89,8 @@ namespace RecipesFounder.DataAccessLayer.Repository.Migrations
                 {
                     FavoriteID = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    RecipeID = table.Column<int>(nullable: true),
-                    ExternalRecipe = table.Column<int>(nullable: true),
+                    RecipeID = table.Column<string>(nullable: true),
+                    ExternalRecipe = table.Column<string>(nullable: true),
                     UserID = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
@@ -110,9 +117,7 @@ namespace RecipesFounder.DataAccessLayer.Repository.Migrations
                     IngredientID = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     Name = table.Column<string>(nullable: true),
-                    Unit = table.Column<string>(nullable: true),
-                    Amount = table.Column<float>(nullable: false),
-                    RecipeID = table.Column<int>(nullable: false)
+                    RecipeID = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -122,7 +127,7 @@ namespace RecipesFounder.DataAccessLayer.Repository.Migrations
                         column: x => x.RecipeID,
                         principalTable: "Recipes",
                         principalColumn: "RecipeID",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -131,8 +136,8 @@ namespace RecipesFounder.DataAccessLayer.Repository.Migrations
                 {
                     RatingID = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    RecipeID = table.Column<int>(nullable: true),
-                    ExternalRecipe = table.Column<int>(nullable: true),
+                    RecipeID = table.Column<string>(nullable: true),
+                    ExternalRecipe = table.Column<string>(nullable: true),
                     Hearts = table.Column<int>(nullable: false),
                     Likes = table.Column<int>(nullable: false),
                     Unlikes = table.Column<int>(nullable: false)

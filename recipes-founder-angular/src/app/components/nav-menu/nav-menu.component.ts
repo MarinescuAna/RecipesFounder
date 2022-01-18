@@ -19,5 +19,6 @@ export class NavMenuComponent implements OnInit {
 
   doLoggOut():void{
     this.service.doLogout();
+    window.location.reload();
   }
 }

@@ -15,7 +15,7 @@ namespace RecipesFounder.AplicationLogic.Service.Implementation
         {
         }
 
-        public async Task<List<Comment>> GetComments(int recipeId, bool isExtern) =>
+        public async Task<List<Comment>> GetComments(string recipeId, bool isExtern) =>
           (await _unitOfWork.CommentRepo.GetItems())
             .Where(u => (isExtern && u.ExternalRecipe == recipeId) || (!isExtern && u.RecipeID == recipeId)).ToList();
 

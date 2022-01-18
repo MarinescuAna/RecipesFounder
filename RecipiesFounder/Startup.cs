@@ -36,20 +36,19 @@ namespace RecipiesFounder
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDistributedMemoryCache();
             services.AddControllers();
             services.AddDbContext<RecipeFounderDbContext>(options => options.UseSqlite(Configuration.GetConnectionString("cs")));
-            //Session
-            services.AddDistributedMemoryCache();
-            services.AddSession(options =>
-            {
-                options.IdleTimeout = TimeSpan.FromMinutes(30);
-                options.Cookie.HttpOnly = true;
-                options.Cookie.IsEssential = true;
-            });
+         
             services.AddSingleton<ILoggerService, LoggerService>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<IUnitOfWorkForServices, UnitOfWorkForServices>();
             services.AddScoped<IJsonWebTokenService, JsonWebTokenServiceImpl>();
+    
+            services.AddSession(options => {
+                options.IdleTimeout = TimeSpan.FromMinutes(120);
+            });
+
             //For Jwt
             var tokenValidationParameter = new TokenValidationParameters()
             {
@@ -102,7 +101,7 @@ namespace RecipiesFounder
                 app.UseDeveloperExceptionPage();
             }
             //Session
-            app.UseSession();
+          
             app.UseHttpsRedirection();
 
 
@@ -115,6 +114,8 @@ namespace RecipiesFounder
              {
                  options.SwaggerEndpoint("/swagger/v1/swagger.json", "Swagger Demo API");
              });
+
+            app.UseSession();
             //Add JWToken to all incoming HTTP Request Header
             app.Use(async (context, next) =>
             {
