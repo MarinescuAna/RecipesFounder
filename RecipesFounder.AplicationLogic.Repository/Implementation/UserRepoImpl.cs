@@ -19,12 +19,10 @@ namespace RecipesFounder.AplicationLogic.Repository.Implementation
         public override async Task<IEnumerable<User>> GetItems() =>
             await _dbContext.Users
                 .Include(s => s.Favorites)
-                .Include(s => s.Recipes)
                 .ToListAsync();
         public override async Task<User> GetItem(Expression<Func<User, bool>> expression) =>
            await _dbContext.Users
                 .Include(s => s.Favorites)
-                .Include(s => s.Recipes)
                .AsNoTracking()
                .FirstOrDefaultAsync(expression);
     }

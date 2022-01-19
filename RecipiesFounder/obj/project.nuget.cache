@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "77zHZkzX8klVCv9zxo6/Z866wPpB/6WxYpjxbNthrSRdYOiJMfouhUnsoEEnMMTM7Qxyo0e1rOttz0kebHFnzg==",
+  "dgSpecHash": "mBLeUkvI1eqgst4bjBwWJKA0by3rP4JyUYI/TPCA6H1DPDPwcuz7SLvF3ZR1A0shjTie6THsYTeppktb8nUSwA==",
   "success": true,
   "projectFilePath": "C:\\Users\\marin\\OneDrive\\Documente\\GitHub\\RecipesFounder\\RecipiesFounder\\RecipiesFounder.csproj",
   "expectedPackageFiles": [
@@ -57,7 +57,9 @@
     "C:\\Users\\marin\\.nuget\\packages\\system.identitymodel.tokens.jwt\\6.15.0\\system.identitymodel.tokens.jwt.6.15.0.nupkg.sha512",
     "C:\\Users\\marin\\.nuget\\packages\\system.memory\\4.5.4\\system.memory.4.5.4.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.security.cryptography.cng\\4.5.0\\system.security.cryptography.cng.4.5.0.nupkg.sha512",
-    "C:\\Users\\marin\\.nuget\\packages\\system.text.json\\4.7.0\\system.text.json.4.7.0.nupkg.sha512"
+    "C:\\Users\\marin\\.nuget\\packages\\system.text.json\\4.7.0\\system.text.json.4.7.0.nupkg.sha512",
+    "C:\\Users\\marin\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\3.1.22\\microsoft.netcore.app.host.win-x64.3.1.22.nupkg.sha512",
+    "C:\\Users\\marin\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\3.1.10\\microsoft.aspnetcore.app.ref.3.1.10.nupkg.sha512"
   ],
   "logs": []
 }

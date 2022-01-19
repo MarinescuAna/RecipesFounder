@@ -18,14 +18,12 @@ namespace RecipesFounder.AplicationLogic.Repository.Implementation
         }
         public override async Task<IEnumerable<Recipe>> GetItems() =>
             await _dbContext.Recipes
-                .Include(s => s.User)
                 .Include(s => s.Ratings)
                 .Include(s => s.Ingredients)
                 .Include(s => s.Comments)
                 .ToListAsync();
         public override async Task<Recipe> GetItem(Expression<Func<Recipe, bool>> expression) =>
            await _dbContext.Recipes
-                .Include(s => s.User)
                 .Include(s => s.Ratings)
                 .Include(s => s.Ingredients)
                 .Include(s => s.Comments)

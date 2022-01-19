@@ -100,7 +100,7 @@ namespace RecipiesFounder.Controllers
                 newList.Add(
                     new RecipeGetDTO
                     {
-                        Username=recipe.User?.Name,
+                        Username=recipe.UserID,
                         ExtendedIngredients=recipe.Ingredients?.Select(u=>u.Name).ToArray(),
                         GlutenFree=recipe.GlutenFree,
                         HealtyScore=recipe.HealtyScore, 
@@ -144,7 +144,7 @@ namespace RecipiesFounder.Controllers
                 newList.Add(
                     new RecipeGetDTO
                     {
-                        Username = recipe.User?.Name,
+                        Username = recipe.UserID,
                         ExtendedIngredients = recipe.Ingredients?.Select(u => u.Name).ToArray(),
                         GlutenFree = recipe.GlutenFree,
                         HealtyScore = recipe.HealtyScore,

@@ -18,8 +18,6 @@ namespace RecipesFounder.DataAccessLayer.Domain.Domain
         public string Password { get; set; }
         public string AccessToken { get; set; }
         public DateTime AccessTokenExpDate { get; set; }
-
-        public ICollection<Recipe> Recipes { get; set; }
         public ICollection<Favorite> Favorites { get; set; }
     }
 }
