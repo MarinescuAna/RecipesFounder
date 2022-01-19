@@ -26,6 +26,8 @@ export class RecipeDetailsComponent implements OnInit {
         this.recipeOverviewInfoModule = params as RecipeOverviewInfoModule;
         if (this.recipeOverviewInfoModule.isExternal) {
           this.GetRecipeInformation();
+        }else{
+          this.recipService.GetPublicRecipie(this.recipe.id);
         }
       }
     );

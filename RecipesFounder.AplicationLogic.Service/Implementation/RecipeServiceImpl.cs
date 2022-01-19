@@ -26,5 +26,8 @@ namespace RecipesFounder.AplicationLogic.Service.Implementation
             (await _unitOfWork.RecipeRepo.GetItems()).Where(u => u.IsPublic).ToList();
         public async Task<List<Recipe>> GetAllRecipesByUserEmailAsync(string email) =>
             (await _unitOfWork.RecipeRepo.GetItems()).Where(u => u.UserID == email).ToList();
+
+        public async Task<Recipe> GetRecipeByIdAsync(string id) =>
+            await _unitOfWork.RecipeRepo.GetItem(u => u.RecipeID == id);
     }
 }

@@ -23,6 +23,7 @@
     <ProjectReference Include="..\ApplicationLoggerLibrary\ApplicationLoggerLibrary.csproj" />
     <ProjectReference Include="..\RecipesFounder.AplicationLogic.Repository\RecipesFounder.AplicationLogic.Repository.csproj" />
     <ProjectReference Include="..\RecipesFounder.AplicationLogic.Service\RecipesFounder.AplicationLogic.Service.csproj" />
+    <ProjectReference Include="..\RecipesFounder.DataAccessLayer.Domain\RecipesFounder.DataAccessLayer.Domain.csproj" />
     <ProjectReference Include="..\RecipesFounder.DataAccessLayer.Repository\RecipesFounder.DataAccessLayer.Repository.csproj" />
   </ItemGroup>
 

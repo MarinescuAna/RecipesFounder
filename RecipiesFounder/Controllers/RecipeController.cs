@@ -63,6 +63,25 @@ namespace RecipiesFounder.Controllers
             }
             return Ok();
         }
+        [HttpGet]
+        [Route("/api/Recipe/GetPublicRecipie")]
+        [AllowAnonymous]
+        public async Task<IActionResult> GetPublicRecipie(string id)
+        {
+
+            if (string.IsNullOrEmpty(id))
+            {
+                return StatusCode(ErrorsAndMessages.Number_400, ErrorsAndMessages.SomethingWentWrong);
+            }
+
+            var recipe = await _unitOfWorkForServices.RecipeService.GetRecipeByIdAsync(id);
+
+            if (recipe==null)
+            {
+                return StatusCode(ErrorsAndMessages.Number_400, ErrorsAndMessages.SomethingWentWrong);
+            }
+            return Ok(recipe);
+        }
 
         [HttpGet]
         [Route("/api/Recipe/GetPublicRecipies")]
@@ -95,15 +114,18 @@ namespace RecipiesFounder.Controllers
                         Title=recipe.Title,
                         Vegan=recipe.Vegan,
                         Vegetarian=recipe.Vegetarian,
+                        Id = recipe.RecipeID
                     });
 
             });
 
             return Ok(newList);
         }
+
         [HttpGet]
-        [Route("/api/Recipe/GetPublicRecipies")]
-        [AllowAnonymous]
+        [Route("/api/Recipe/GetUserRecipies")]
+        //TODO [Authorize]
+        //TODO remove the email parameter 
         public async Task<IActionResult> GetUserRecipies(string email)
         {
             if(string.IsNullOrEmpty(email))
@@ -136,6 +158,7 @@ namespace RecipiesFounder.Controllers
                         Title = recipe.Title,
                         Vegan = recipe.Vegan,
                         Vegetarian = recipe.Vegetarian,
+                        Id = recipe.RecipeID
                     });
 
             });

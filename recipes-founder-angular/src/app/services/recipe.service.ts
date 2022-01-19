@@ -12,7 +12,7 @@ export class StepImageModule {
 })
 
 export class RecipeService extends BaseExternalApiService {
-  
+
   constructor(injector: Injector) {
     super(injector,'Recipe');
   }
@@ -35,5 +35,19 @@ export class RecipeService extends BaseExternalApiService {
   public CreateRecipe(recipe:RecipeCreateModule):any{
     let url = `${environment.baseApiUrl}${this.controllerName}/CreateRecipe`;
     return super.add(recipe,url);
+  }
+
+  public GetPublicRecipies(): any{
+    let url = `${environment.baseApiUrl}${this.controllerName}/GetPublicRecipies`;
+    return super.getMany(url);
+  }
+  public GetPublicRecipie(id:string): any{
+    let url = `${environment.baseApiUrl}${this.controllerName}/GetPublicRecipie?id=${id}`;
+    return super.getOne(url);
+  }
+
+  public GetUserRecipies(email:string): any{
+    let url = `${environment.baseApiUrl}${this.controllerName}/GetUserRecipies?email=${email}`;
+    return super.getMany(url);
   }
 }

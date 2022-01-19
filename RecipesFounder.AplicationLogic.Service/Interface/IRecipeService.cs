@@ -11,5 +11,6 @@ namespace RecipesFounder.AplicationLogic.Service.Interface
         Task<bool> CreateRecipeAsync(Recipe recipe);
         Task<List<Recipe>> GetAllRecipesByUserEmailAsync(string email);
         Task<List<Recipe>> GetAllRecipesByIsPublicFlagAsync();
+        Task<Recipe> GetRecipeByIdAsync(string id);
     }
 }
