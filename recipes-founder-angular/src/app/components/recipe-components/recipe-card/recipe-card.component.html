@@ -1,11 +1,12 @@
 <mat-card>
     <mat-card-header>
         <mat-card-title >
-           {{recipe.title}} 
+           {{recipe.title}}
         </mat-card-title>
     </mat-card-header>
     <img [src]="recipe.image" />
     <mat-card-actions>
-        <button class="a" (click)="onRouteTo()" >Recipe informations</button> 
+        <button class="a" (click)="onRouteTo()" >Recipe informations</button>
+        <button *ngIf="canBeModify && recipe.isPublic" class="a" style="margin: 2%;" (click)="onPulish()" >Publish</button>
     </mat-card-actions>
 </mat-card>

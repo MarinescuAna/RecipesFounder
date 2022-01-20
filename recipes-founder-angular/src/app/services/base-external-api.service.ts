@@ -23,7 +23,7 @@ export class BaseExternalApiService {
     this.alertService=this.injector.get(AlertService);
     this.controllerName=controller;
    }
-   
+
    protected getMany(url: string): any{
     return this.http.get<[]>(url,httpOptions);
   }
@@ -36,7 +36,11 @@ export class BaseExternalApiService {
     const body = JSON.stringify(entity);
     return this.http.post(url, body, httpOptions);
   }
- 
 
+  // tslint:disable-next-line: typedef
+  protected update(url:string, entity: any) {
+    const body = JSON.stringify(entity);
+    return this.http.put(url, body, httpOptions);
+  }
 
 }

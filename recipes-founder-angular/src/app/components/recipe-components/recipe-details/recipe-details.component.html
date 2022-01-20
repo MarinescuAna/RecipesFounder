@@ -1,48 +1,57 @@
 <div class="container">
-    <div class="jumbotron color">
-        <h2>{{recipe.title}}</h2>
-        <div class="row ">
-            <p class="subtitle">
-                <mat-icon>schedule</mat-icon><strong> Ready in</strong> {{recipe.readyInMinutes}}
-                <strong>minutes</strong>
-            </p>
-            <p class="subtitle">
-                <mat-icon>restaurant</mat-icon> <strong> Servings:</strong> {{recipe.servings}}
-            </p>
-            <p class="subtitle">
-                <mat-icon>health_and_safety</mat-icon> <strong> Health Score:</strong> {{recipe.healthScore}}
-            </p>
-            <div class="row chips">
-                <mat-chip-list cdkDropList cdkDropListOrientation="horizontal">
-                    <mat-chip class="chip" cdkDrag *ngFor="let tag of tags">
-                        {{tag}}
-                    </mat-chip>
-                </mat-chip-list>
-            </div>
-        </div>
+  <div class="jumbotron color">
+    <h2>{{recipe.title}}</h2>
+    <div class="row ">
+      <p class="subtitle">
+        <mat-icon>user</mat-icon><strong> Author</strong> {{recipe.username}}
+      </p>
+      <p class="subtitle">
+        <mat-icon>schedule</mat-icon><strong> Ready in</strong> {{recipe.readyInMinutes}}
+        <strong>minutes</strong>
+      </p>
+      <p class="subtitle">
+        <mat-icon>restaurant</mat-icon> <strong> Servings:</strong> {{recipe.servings}}
+      </p>
+      <p class="subtitle">
+        <mat-icon>health_and_safety</mat-icon> <strong> Health Score:</strong> {{recipe.healthScore}}
+      </p>
+      <div class="row chips">
+        <mat-chip-list cdkDropList cdkDropListOrientation="horizontal">
+          <mat-chip class="chip" cdkDrag *ngFor="let tag of tags">
+            {{tag}}
+          </mat-chip>
+        </mat-chip-list>
+      </div>
     </div>
+  </div>
 
-    <div class="col-md-6">
-        <h5>Summary</h5>
-        <div class="row">
-            <p class="summary-text-style" [innerHTML]="recipe.summary"></p>
-        </div>
+  <div class="col-md-6" *ngIf="recipe.summary!=null ||recipe.summary!='' ">
+    <h5>Summary</h5>
+    <div class="row">
+      <p class="summary-text-style" [innerHTML]="recipe.summary"></p>
     </div>
-    <div class="col-md-6">
-        <img [src]="recipe.image">
-    </div>
+  </div>
+  <div class="col-md-6">
+    <img [src]="recipe.image" width="600px">
+  </div>
 
-    <div class="col-md-12" *ngIf="!noSteps">
-        <h5>Ingredients</h5>
-        <ul *ngFor="let ingredient of recipe.extendedIngredients">
-            <li>{{ingredient.original}} ({{ingredient.measures.metric.amount}} {{ingredient.measures.metric.unitShort}}
-                {{ingredient.name}})</li>
-        </ul>
-    </div>
-    <div class="col-md-12">
-           <img [src]="recipe.imageSteps">
-    </div>
-<!--     <div class="col-md-12">
+  <div class="col-md-12" *ngIf="!noSteps">
+    <h5>Ingredients</h5>
+    <ul *ngFor="let ingredient of recipe.extendedIngredients">
+      <li *ngIf="!isExternal">{{ingredient.original}} ({{ingredient.measures.metric.amount}}
+        {{ingredient.measures.metric.unitShort}}
+        {{ingredient.name}})</li>
+      <li *ngIf="isExternal">{{ingredient.name}}</li>
+    </ul>
+  </div>
+  <div class="col-md-12" *ngIf="isExternal">
+    <h5>Preparation</h5>
+    <p class="summary-text-style"> {{recipe.preparationDescription}}</p>
+  </div>
+  <div class="col-md-12">
+    <img [src]="recipe.imageSteps" width="1000px">
+  </div>
+  <!--     <div class="col-md-12">
         <app-recipe-evaluation [recipeId]="id" [isExternal]="true"></app-recipe-evaluation>
     </div> -->
 </div>

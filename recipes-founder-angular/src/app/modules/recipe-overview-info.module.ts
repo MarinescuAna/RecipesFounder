@@ -9,9 +9,10 @@ import { CommonModule } from '@angular/common';
     CommonModule
   ]
 })
-export class RecipeOverviewInfoModule { 
+export class RecipeOverviewInfoModule {
   id:string;
   title: string;
   image: string;
   isExternal:boolean=true;
+  isPublic:boolean=true;
 }

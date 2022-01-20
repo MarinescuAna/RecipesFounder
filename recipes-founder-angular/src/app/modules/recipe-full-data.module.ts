@@ -12,8 +12,9 @@ export class RecipeFullDataModule{
     vegan:  boolean;
     vegetarian: boolean;
     summary:  string;
-    createdBy:string;
     isExternal:boolean;
+    username: string;
+    preparationDescription: string;
     imageSteps:string;
-    extendedIngredients: IngredientModule[];   
+    extendedIngredients: IngredientModule[];
 }

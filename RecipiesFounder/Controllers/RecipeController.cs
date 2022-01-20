@@ -19,7 +19,30 @@ namespace RecipiesFounder.Controllers
         public RecipeController(IUnitOfWorkForServices unitOfWorkForServices, IHttpContextAccessor httpContextAccessor = null) : base(unitOfWorkForServices, httpContextAccessor)
         {
         }
+        //TODO [Authorize]
+        [HttpPost]
+        [Route("/api/Recipe/MakePublic")]
+        public async Task<IActionResult> MakePublic(string id)
+        {
+            if (string.IsNullOrEmpty(id))
+            {
+                return StatusCode(ErrorsAndMessages.Number_204, ErrorsAndMessages.NoContent);
+            }
 
+            var recipe = await _unitOfWorkForServices.RecipeService.GetRecipeByIdAsync(id);
+            if (recipe == null)
+            {
+               //TODO no content
+                return StatusCode(ErrorsAndMessages.Number_400, ErrorsAndMessages.SomethingWentWrong);
+            }
+
+            recipe.IsPublic= true;
+            if (!await _unitOfWorkForServices.RecipeService.UpdateByIdAsync(recipe))
+            {
+                return StatusCode(ErrorsAndMessages.Number_400, ErrorsAndMessages.SomethingWentWrong);
+            }
+            return Ok();
+        }
         //TODO [Authorize]
         [HttpPost]
         [Route("/api/Recipe/CreateRecipe")]
@@ -80,7 +103,25 @@ namespace RecipiesFounder.Controllers
             {
                 return StatusCode(ErrorsAndMessages.Number_400, ErrorsAndMessages.SomethingWentWrong);
             }
-            return Ok(recipe);
+            return Ok(new RecipeGetDTO {
+                Username = recipe.User?.Name,
+                ExtendedIngredients = recipe.Ingredients?.Select(u => u.Name).ToArray(),
+                GlutenFree = recipe.GlutenFree,
+                HealtyScore = recipe.HealtyScore,
+                Image = recipe.Image,
+                ImageSteps = recipe.ImageSteps,
+                Ketogenic = recipe.Ketogenic,
+                PreparationDescription = recipe.PreparationDescription,
+                ReadyInMinutes = recipe.ReadyInMinutes,
+                Servings = recipe.Servings,
+                Summary = recipe.Summary,
+                Title = recipe.Title,
+                Vegan = recipe.Vegan,
+                IsPublic=recipe.IsPublic,
+                Vegetarian = recipe.Vegetarian,
+                Id = recipe.RecipeID
+
+            });
         }
 
         [HttpGet]
@@ -111,7 +152,8 @@ namespace RecipiesFounder.Controllers
                         ReadyInMinutes=recipe.ReadyInMinutes,
                         Servings=recipe.Servings,
                         Summary=recipe.Summary,
-                        Title=recipe.Title,
+                        IsPublic = recipe.IsPublic,
+                        Title =recipe.Title,
                         Vegan=recipe.Vegan,
                         Vegetarian=recipe.Vegetarian,
                         Id = recipe.RecipeID
@@ -157,6 +199,7 @@ namespace RecipiesFounder.Controllers
                         Summary = recipe.Summary,
                         Title = recipe.Title,
                         Vegan = recipe.Vegan,
+                        IsPublic = recipe.IsPublic,
                         Vegetarian = recipe.Vegetarian,
                         Id = recipe.RecipeID
                     });

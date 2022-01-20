@@ -21,11 +21,19 @@ namespace RecipesFounder.AplicationLogic.Service.Implementation
 
             return await _unitOfWork.Commit() > 0;
         }
+        public async Task<bool> UpdateByIdAsync(Recipe recipe)
+        {
+            await _unitOfWork.RecipeRepo.UpdateItem(recipe);
 
+            return await _unitOfWork.Commit() > 0;
+        }
         public async Task<List<Recipe>> GetAllRecipesByIsPublicFlagAsync() =>
             (await _unitOfWork.RecipeRepo.GetItems()).Where(u => u.IsPublic).ToList();
         public async Task<List<Recipe>> GetAllRecipesByUserEmailAsync(string email) =>
             (await _unitOfWork.RecipeRepo.GetItems()).Where(u => u.UserID == email).ToList();
+
+        public async Task<string[]> GetIngredientsNameByRecipeIdAsync(string id) =>
+             (await _unitOfWork.RecipeRepo.GetItem(u => u.RecipeID == id)).Ingredients.Select(u=>u.Name).ToArray();
 
         public async Task<Recipe> GetRecipeByIdAsync(string id) =>
             await _unitOfWork.RecipeRepo.GetItem(u => u.RecipeID == id);

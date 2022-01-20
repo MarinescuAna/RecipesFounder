@@ -1,3 +1,4 @@
+import { MyRecipeComponent } from './components/recipe-components/my-recipe/my-recipe.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './components/account/login/login.component';

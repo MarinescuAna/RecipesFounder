@@ -1,10 +1,10 @@
-<div class="container-custom"> 
-    <div class="alert alert-success search-bar">
-<div class="row">
-    <p style="text-align: center;">in progress...</p>
-</div>
+<div class="container-custom">
+  <div class="alert alert-success search-bar">
+    <div class="row">
+      <p style="text-align: center;">in progress...</p>
     </div>
-    <div class="row">     
-            <app-recipe-card  class="col-md-4" *ngFor="let recipe of list.results" [recipe]='recipe'></app-recipe-card>
-    </div>
+  </div>
+  <div class="row">
+    <app-recipe-card class="col-md-4" *ngFor="let recipe of list.results" [recipe]='recipe'></app-recipe-card>
+  </div>
 </div>

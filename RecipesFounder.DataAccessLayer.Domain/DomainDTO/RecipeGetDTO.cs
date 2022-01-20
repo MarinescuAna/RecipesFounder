@@ -17,6 +17,7 @@ namespace RecipesFounder.DataAccessLayer.Domain.DomainDTO
         public bool Ketogenic { get; set; }
         public bool Vegetarian { get; set; }
         public bool Vegan { get; set; }
+        public bool IsPublic { get; set; }
         public string Summary { get; set; }
         public string ImageSteps { get; set; }
         public string PreparationDescription { get; set; }

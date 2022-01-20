@@ -18,7 +18,8 @@ export class RecipeListComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.GetExternalRecipies();
+    this.list.results=[];
+  //  this.GetExternalRecipies();
     this.GetUsersRecipies();
   }
 
@@ -37,7 +38,6 @@ export class RecipeListComponent implements OnInit {
   private GetUsersRecipies():void{
     this.serviceRecipe.GetPublicRecipies().subscribe(cr => {
       let list2 = cr as RecipeGetModule[];
-      debugger
       list2.forEach(element =>{
         let newRecipe = new RecipeOverviewInfoModule;
         newRecipe.id=element.id;

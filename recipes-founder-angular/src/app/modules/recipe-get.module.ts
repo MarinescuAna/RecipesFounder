@@ -14,7 +14,7 @@ export class RecipeGetModule{
     vegan:  boolean;
     vegetarian: boolean;
     summary:  string;
-    //isExternal:boolean;
     imageSteps:string;
+    isPublic:boolean;
     extendedIngredients: string[];
 }
