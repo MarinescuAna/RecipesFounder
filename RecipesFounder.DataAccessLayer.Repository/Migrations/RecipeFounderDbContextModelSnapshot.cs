@@ -170,8 +170,6 @@ namespace RecipesFounder.DataAccessLayer.Repository.Migrations
 
                     b.HasKey("RecipeID");
 
-                    b.HasIndex("UserID");
-
                     b.ToTable("Recipes");
                 });
 
@@ -234,13 +232,6 @@ namespace RecipesFounder.DataAccessLayer.Repository.Migrations
                     b.HasOne("RecipesFounder.DataAccessLayer.Domain.Domain.Recipe", "Recipe")
                         .WithMany("Ratings")
                         .HasForeignKey("RecipeID");
-                });
-
-            modelBuilder.Entity("RecipesFounder.DataAccessLayer.Domain.Domain.Recipe", b =>
-                {
-                    b.HasOne("RecipesFounder.DataAccessLayer.Domain.Domain.User", "User")
-                        .WithMany("Recipes")
-                        .HasForeignKey("UserID");
                 });
 #pragma warning restore 612, 618
         }

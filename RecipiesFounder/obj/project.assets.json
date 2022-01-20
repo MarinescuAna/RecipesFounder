@@ -2033,7 +2033,12 @@
     ]
   },
   "packageFolders": {
+<<<<<<< HEAD
     "C:\\Users\\a.marinescu\\.nuget\\packages\\": {}
+=======
+    "C:\\Users\\marin\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+>>>>>>> e2301d1754cbcae0eef632bc050d9c63e2bbb58c
   },
   "project": {
     "version": "1.0.0",
@@ -2044,9 +2049,17 @@
       "packagesPath": "C:\\Users\\a.marinescu\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\a.marinescu\\Desktop\\New folder\\RecipiesFounder\\obj\\",
       "projectStyle": "PackageReference",
+<<<<<<< HEAD
       "configFilePaths": [
         "C:\\Users\\a.marinescu\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 19.1.config",
+=======
+      "fallbackFolders": [
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
+      "configFilePaths": [
+        "C:\\Users\\marin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+>>>>>>> e2301d1754cbcae0eef632bc050d9c63e2bbb58c
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -2073,8 +2086,16 @@
             "C:\\Users\\a.marinescu\\Desktop\\New folder\\RecipesFounder.DataAccessLayer.Domain\\RecipesFounder.DataAccessLayer.Domain.csproj": {
               "projectPath": "C:\\Users\\a.marinescu\\Desktop\\New folder\\RecipesFounder.DataAccessLayer.Domain\\RecipesFounder.DataAccessLayer.Domain.csproj"
             },
+<<<<<<< HEAD
             "C:\\Users\\a.marinescu\\Desktop\\New folder\\RecipesFounder.DataAccessLayer.Repository\\RecipesFounder.DataAccessLayer.Repository.csproj": {
               "projectPath": "C:\\Users\\a.marinescu\\Desktop\\New folder\\RecipesFounder.DataAccessLayer.Repository\\RecipesFounder.DataAccessLayer.Repository.csproj"
+=======
+            "C:\\Users\\marin\\OneDrive\\Documente\\GitHub\\RecipesFounder\\RecipesFounder.DataAccessLayer.Domain\\RecipesFounder.DataAccessLayer.Domain.csproj": {
+              "projectPath": "C:\\Users\\marin\\OneDrive\\Documente\\GitHub\\RecipesFounder\\RecipesFounder.DataAccessLayer.Domain\\RecipesFounder.DataAccessLayer.Domain.csproj"
+            },
+            "C:\\Users\\marin\\OneDrive\\Documente\\GitHub\\RecipesFounder\\RecipesFounder.DataAccessLayer.Repository\\RecipesFounder.DataAccessLayer.Repository.csproj": {
+              "projectPath": "C:\\Users\\marin\\OneDrive\\Documente\\GitHub\\RecipesFounder\\RecipesFounder.DataAccessLayer.Repository\\RecipesFounder.DataAccessLayer.Repository.csproj"
+>>>>>>> e2301d1754cbcae0eef632bc050d9c63e2bbb58c
             }
           }
         }
@@ -2128,6 +2149,16 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.AspNetCore.App.Ref",
+            "version": "[3.1.10, 3.1.10]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Host.win-x64",
+            "version": "[3.1.22, 3.1.22]"
+          }
+        ],
         "frameworkReferences": {
           "Microsoft.AspNetCore.App": {
             "privateAssets": "none"

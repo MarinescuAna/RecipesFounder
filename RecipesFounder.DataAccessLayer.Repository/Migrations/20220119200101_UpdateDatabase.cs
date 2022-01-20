@@ -3,25 +3,10 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace RecipesFounder.DataAccessLayer.Repository.Migrations
 {
-    public partial class ChanegRecipeId : Migration
+    public partial class UpdateDatabase : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.CreateTable(
-                name: "Users",
-                columns: table => new
-                {
-                    Email = table.Column<string>(maxLength: 254, nullable: false),
-                    Name = table.Column<string>(maxLength: 128, nullable: true),
-                    Password = table.Column<string>(maxLength: 128, nullable: true),
-                    AccessToken = table.Column<string>(nullable: true),
-                    AccessTokenExpDate = table.Column<DateTime>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Users", x => x.Email);
-                });
-
             migrationBuilder.CreateTable(
                 name: "Recipes",
                 columns: table => new
@@ -46,11 +31,63 @@ namespace RecipesFounder.DataAccessLayer.Repository.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Recipes", x => x.RecipeID);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Users",
+                columns: table => new
+                {
+                    Email = table.Column<string>(maxLength: 254, nullable: false),
+                    Name = table.Column<string>(maxLength: 128, nullable: true),
+                    Password = table.Column<string>(maxLength: 128, nullable: true),
+                    AccessToken = table.Column<string>(nullable: true),
+                    AccessTokenExpDate = table.Column<DateTime>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Users", x => x.Email);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Ingredients",
+                columns: table => new
+                {
+                    IngredientID = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Name = table.Column<string>(nullable: true),
+                    RecipeID = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Ingredients", x => x.IngredientID);
                     table.ForeignKey(
-                        name: "FK_Recipes_Users_UserID",
-                        column: x => x.UserID,
-                        principalTable: "Users",
-                        principalColumn: "Email",
+                        name: "FK_Ingredients_Recipes_RecipeID",
+                        column: x => x.RecipeID,
+                        principalTable: "Recipes",
+                        principalColumn: "RecipeID",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Ratings",
+                columns: table => new
+                {
+                    RatingID = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    RecipeID = table.Column<string>(nullable: true),
+                    ExternalRecipe = table.Column<string>(nullable: true),
+                    Hearts = table.Column<int>(nullable: false),
+                    Likes = table.Column<int>(nullable: false),
+                    Unlikes = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Ratings", x => x.RatingID);
+                    table.ForeignKey(
+                        name: "FK_Ratings_Recipes_RecipeID",
+                        column: x => x.RecipeID,
+                        principalTable: "Recipes",
+                        principalColumn: "RecipeID",
                         onDelete: ReferentialAction.Restrict);
                 });
 
@@ -110,49 +147,6 @@ namespace RecipesFounder.DataAccessLayer.Repository.Migrations
                         onDelete: ReferentialAction.Restrict);
                 });
 
-            migrationBuilder.CreateTable(
-                name: "Ingredients",
-                columns: table => new
-                {
-                    IngredientID = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    Name = table.Column<string>(nullable: true),
-                    RecipeID = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Ingredients", x => x.IngredientID);
-                    table.ForeignKey(
-                        name: "FK_Ingredients_Recipes_RecipeID",
-                        column: x => x.RecipeID,
-                        principalTable: "Recipes",
-                        principalColumn: "RecipeID",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Ratings",
-                columns: table => new
-                {
-                    RatingID = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    RecipeID = table.Column<string>(nullable: true),
-                    ExternalRecipe = table.Column<string>(nullable: true),
-                    Hearts = table.Column<int>(nullable: false),
-                    Likes = table.Column<int>(nullable: false),
-                    Unlikes = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Ratings", x => x.RatingID);
-                    table.ForeignKey(
-                        name: "FK_Ratings_Recipes_RecipeID",
-                        column: x => x.RecipeID,
-                        principalTable: "Recipes",
-                        principalColumn: "RecipeID",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
             migrationBuilder.CreateIndex(
                 name: "IX_Comments_RecipeID",
                 table: "Comments",
@@ -182,11 +176,6 @@ namespace RecipesFounder.DataAccessLayer.Repository.Migrations
                 name: "IX_Ratings_RecipeID",
                 table: "Ratings",
                 column: "RecipeID");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Recipes_UserID",
-                table: "Recipes",
-                column: "UserID");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -204,10 +193,10 @@ namespace RecipesFounder.DataAccessLayer.Repository.Migrations
                 name: "Ratings");
 
             migrationBuilder.DropTable(
-                name: "Recipes");
+                name: "Users");
 
             migrationBuilder.DropTable(
-                name: "Users");
+                name: "Recipes");
         }
     }
 }

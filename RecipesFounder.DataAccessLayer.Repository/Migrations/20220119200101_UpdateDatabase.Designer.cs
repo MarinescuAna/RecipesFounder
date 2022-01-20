@@ -9,8 +9,8 @@ using RecipesFounder.DataAccessLayer.Repository;
 namespace RecipesFounder.DataAccessLayer.Repository.Migrations
 {
     [DbContext(typeof(RecipeFounderDbContext))]
-    [Migration("20220116184647_ChanegRecipeId")]
-    partial class ChanegRecipeId
+    [Migration("20220119200101_UpdateDatabase")]
+    partial class UpdateDatabase
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -172,8 +172,6 @@ namespace RecipesFounder.DataAccessLayer.Repository.Migrations
 
                     b.HasKey("RecipeID");
 
-                    b.HasIndex("UserID");
-
                     b.ToTable("Recipes");
                 });
 
@@ -236,13 +234,6 @@ namespace RecipesFounder.DataAccessLayer.Repository.Migrations
                     b.HasOne("RecipesFounder.DataAccessLayer.Domain.Domain.Recipe", "Recipe")
                         .WithMany("Ratings")
                         .HasForeignKey("RecipeID");
-                });
-
-            modelBuilder.Entity("RecipesFounder.DataAccessLayer.Domain.Domain.Recipe", b =>
-                {
-                    b.HasOne("RecipesFounder.DataAccessLayer.Domain.Domain.User", "User")
-                        .WithMany("Recipes")
-                        .HasForeignKey("UserID");
                 });
 #pragma warning restore 612, 618
         }

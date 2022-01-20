@@ -11,7 +11,6 @@ namespace RecipesFounder.DataAccessLayer.Domain.Domain
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public string RecipeID { get; set; }
-        [ForeignKey("User")]
         public string UserID { get; set; }
         public string Summary { get; set; }
         public string Title { get; set; }
@@ -31,6 +30,5 @@ namespace RecipesFounder.DataAccessLayer.Domain.Domain
         public ICollection<Rating> Ratings { get; set; }
         public ICollection<Ingredient> Ingredients { get; set; }
         public ICollection<Comment> Comments { get; set; }
-        public User User { get; set; }
     }
 }
