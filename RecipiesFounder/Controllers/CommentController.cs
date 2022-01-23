@@ -15,8 +15,8 @@ namespace RecipiesFounder.Controllers
     [ApiController]
     public class CommentController : BaseController
     {
-        public CommentController(IUnitOfWorkForServices unitOfWorkForServices, IHttpContextAccessor httpContextAccessor)
-            : base(unitOfWorkForServices, httpContextAccessor)
+        public CommentController(IUnitOfWorkForServices unitOfWorkForServices)
+            : base(unitOfWorkForServices)
         {
         }
         [HttpPost]
@@ -33,8 +33,8 @@ namespace RecipiesFounder.Controllers
                 AddedDateTime=DateTime.Now,
                 Content=commentInsertDTO.Content,
                 ExternalRecipe=commentInsertDTO.IsExternal?commentInsertDTO.RecipeID:string.Empty,
-                RecipeID=!commentInsertDTO.IsExternal?commentInsertDTO.RecipeID:string.Empty,
-                UserID=ExtractEmailFromJWT()
+                RecipeID=!commentInsertDTO.IsExternal?commentInsertDTO.RecipeID:null,
+                UserID=commentInsertDTO.User
             }))
             {
                 return Ok();
@@ -52,7 +52,7 @@ namespace RecipiesFounder.Controllers
                 return StatusCode(ErrorsAndMessages.Number_204, ErrorsAndMessages.NoContent);
             }
 
-            var split = recipeDetails.Split("#");
+            var split = recipeDetails.Split("@");
             var list = await _unitOfWorkForServices.CommentService.GetComments(split[0], bool.Parse(split[1]));
             if (list == null)
             {
@@ -66,7 +66,7 @@ namespace RecipiesFounder.Controllers
                     {
                         Content = recipe.Content,
                         DatetimeAdded = recipe.AddedDateTime.ToString(),
-                        UserName = recipe.User.Name
+                        UserName = recipe.User?.Name
                     });
             });
 

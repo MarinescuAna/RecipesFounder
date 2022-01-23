@@ -16,27 +16,27 @@ namespace RecipiesFounder.Controllers
     [ApiController]
     public class RecipeController : BaseController
     {
-        public RecipeController(IUnitOfWorkForServices unitOfWorkForServices, IHttpContextAccessor httpContextAccessor = null) : base(unitOfWorkForServices, httpContextAccessor)
+        public RecipeController(IUnitOfWorkForServices unitOfWorkForServices) : base(unitOfWorkForServices)
         {
         }
         //TODO [Authorize]
-        [HttpPost]
+        [HttpPut]
         [Route("/api/Recipe/MakePublic")]
-        public async Task<IActionResult> MakePublic(string id)
+        public async Task<IActionResult> MakePublic(RecipeUpdatePublicDTO recipeUpdatePublicDTO)
         {
-            if (string.IsNullOrEmpty(id))
+            if(recipeUpdatePublicDTO==null)
             {
                 return StatusCode(ErrorsAndMessages.Number_204, ErrorsAndMessages.NoContent);
             }
 
-            var recipe = await _unitOfWorkForServices.RecipeService.GetRecipeByIdAsync(id);
+            var recipe = await _unitOfWorkForServices.RecipeService.GetRecipeByIdAsync(recipeUpdatePublicDTO.Id);
             if (recipe == null)
             {
                //TODO no content
                 return StatusCode(ErrorsAndMessages.Number_400, ErrorsAndMessages.SomethingWentWrong);
             }
 
-            recipe.IsPublic= true;
+            recipe.IsPublic= !recipe.IsPublic;
             if (!await _unitOfWorkForServices.RecipeService.UpdateByIdAsync(recipe))
             {
                 return StatusCode(ErrorsAndMessages.Number_400, ErrorsAndMessages.SomethingWentWrong);
@@ -104,7 +104,8 @@ namespace RecipiesFounder.Controllers
                 return StatusCode(ErrorsAndMessages.Number_400, ErrorsAndMessages.SomethingWentWrong);
             }
             return Ok(new RecipeGetDTO {
-                Username = recipe.User?.Name,
+                Email = recipe.UserID,
+                Username = (await _unitOfWorkForServices.UserService.GetUserByEmailAsync(recipe.UserID)).Name,
                 ExtendedIngredients = recipe.Ingredients?.Select(u => u.Name).ToArray(),
                 GlutenFree = recipe.GlutenFree,
                 HealtyScore = recipe.HealtyScore,
@@ -137,11 +138,12 @@ namespace RecipiesFounder.Controllers
             }
 
             var newList = new List<RecipeGetDTO>();
-            list.ForEach(recipe => {
+            list.ForEach(async recipe => {
                 newList.Add(
                     new RecipeGetDTO
                     {
-                        Username=recipe.UserID,
+                        Email = recipe.UserID,
+                        Username=(await _unitOfWorkForServices.UserService.GetUserByEmailAsync(recipe.UserID)).Name,
                         ExtendedIngredients=recipe.Ingredients?.Select(u=>u.Name).ToArray(),
                         GlutenFree=recipe.GlutenFree,
                         HealtyScore=recipe.HealtyScore, 
@@ -182,11 +184,12 @@ namespace RecipiesFounder.Controllers
             }
 
             var newList = new List<RecipeGetDTO>();
-            list.ForEach(recipe => {
+            list.ForEach(async recipe => {
                 newList.Add(
                     new RecipeGetDTO
                     {
-                        Username = recipe.UserID,
+                        Email = recipe.UserID,
+                        Username = (await _unitOfWorkForServices.UserService.GetUserByEmailAsync(recipe.UserID)).Name,
                         ExtendedIngredients = recipe.Ingredients?.Select(u => u.Name).ToArray(),
                         GlutenFree = recipe.GlutenFree,
                         HealtyScore = recipe.HealtyScore,

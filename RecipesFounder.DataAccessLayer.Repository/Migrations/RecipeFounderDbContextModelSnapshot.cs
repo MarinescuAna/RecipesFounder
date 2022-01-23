@@ -95,24 +95,29 @@ namespace RecipesFounder.DataAccessLayer.Repository.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<bool>("Dislikes")
+                        .HasColumnType("INTEGER");
+
                     b.Property<string>("ExternalRecipe")
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("Hearts")
+                    b.Property<bool>("Hearts")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("Likes")
+                    b.Property<bool>("Likes")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("RecipeID")
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("Unlikes")
-                        .HasColumnType("INTEGER");
+                    b.Property<string>("UserID")
+                        .HasColumnType("TEXT");
 
                     b.HasKey("RatingID");
 
                     b.HasIndex("RecipeID");
+
+                    b.HasIndex("UserID");
 
                     b.ToTable("Ratings");
                 });
@@ -232,6 +237,10 @@ namespace RecipesFounder.DataAccessLayer.Repository.Migrations
                     b.HasOne("RecipesFounder.DataAccessLayer.Domain.Domain.Recipe", "Recipe")
                         .WithMany("Ratings")
                         .HasForeignKey("RecipeID");
+
+                    b.HasOne("RecipesFounder.DataAccessLayer.Domain.Domain.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserID");
                 });
 #pragma warning restore 612, 618
         }

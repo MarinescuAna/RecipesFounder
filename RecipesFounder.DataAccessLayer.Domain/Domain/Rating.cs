@@ -10,8 +10,8 @@ namespace RecipesFounder.DataAccessLayer.Domain.Domain
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int RatingID { get; set; }
-        public int Hearts { get; set; }
-        public int Likes { get; set; }
-        public int Unlikes { get; set; }
+        public bool Hearts { get; set; }
+        public bool Likes { get; set; }
+        public bool Dislikes { get; set; }
     }
 }

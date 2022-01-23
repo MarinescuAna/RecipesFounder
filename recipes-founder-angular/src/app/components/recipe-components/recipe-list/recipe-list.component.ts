@@ -19,15 +19,16 @@ export class RecipeListComponent implements OnInit {
 
   ngOnInit(): void {
     this.list.results=[];
-  //  this.GetExternalRecipies();
     this.GetUsersRecipies();
+    this.GetExternalRecipies();
+
   }
 
   private GetExternalRecipies():void{
     this.serviceRecipe.GetRecipes().subscribe(cr => {
-      this.list = cr as RecipeModule;
-      return this.list.results.forEach(element => {
-        element.isExternal = true
+      (cr as RecipeModule).results.forEach(element => {
+        element.isExternal = true;
+        this.list.results.push(element);      
       });
     },
       err => {

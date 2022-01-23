@@ -1,28 +1,23 @@
 import { Injectable, Injector } from "@angular/core";
+import { environment } from "src/environments/environment";
 import { CommentInsert } from "../modules/comment-insert.module";
-import { BaseService } from "./base.service";
+import { BaseExternalApiService } from "./base-external-api.service";
 
 @Injectable({
     providedIn: 'root'
 })
-export class CommentsService extends BaseService {
+export class CommentsService extends BaseExternalApiService {
     constructor(injector: Injector) {
         super(injector, 'Comment');
     }
 
-    InsertComment(comment: CommentInsert): void {
-        super
-            .post('InsertComment', comment)
-            .subscribe(comm => {
-                this.alertService.showSucces("Success!");
-            },
-                err => {
-                    console.log(err);
-                    this.alertService.showError(err.message);
-                });
+    InsertComment(comment: CommentInsert): any {
+       let url = `${environment.baseApiUrl}${this.controllerName}/InsertComment`;
+       return super.add(comment,url);
     }
 
-    GetComments(recipeId:number, isExternal:boolean): any{
-        return super.getMany(`InsertComment/${recipeId}#${isExternal}`);
+    GetComments(recipeId:string, isExternal:boolean): any{
+        let url = `${environment.baseApiUrl}${this.controllerName}/GetComments?recipeDetails=${recipeId}@${isExternal}`;
+        return super.getMany(url);
     }
 }

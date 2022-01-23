@@ -8,7 +8,8 @@ namespace RecipesFounder.AplicationLogic.Service.Interface
 {
     public interface IRatingService
     {
-        Task<Rating> GetRatingAsync(string recipeId, bool isExtern);
+        Task<Rating> WasEvaluatedAsync(string recipeId, string userId, bool isExtern);
+        Task<(int likes, int hearts, int dislikes)> GetRatingAsync(string recipeId, bool isExtern);
         Task<bool> UpdateRatingAsync(Rating rating);
         Task<bool> InsertRatingAsync(Rating rating);
     }

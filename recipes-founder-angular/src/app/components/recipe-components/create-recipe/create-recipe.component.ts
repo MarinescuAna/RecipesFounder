@@ -79,8 +79,8 @@ export class CreateRecipeComponent implements OnInit {
         recipe.vegetarian = true;
       }
     });
-    recipe.summary = this.formRecipe.value.summary;debugger
-    recipe.email=this.authService.decodeJWToken('unique_name')
+    recipe.summary = this.formRecipe.value.summary;
+    recipe.email=this.authService.decodeJWToken('email')
 
     this.service.CreateRecipe(recipe).subscribe(
       cr => {

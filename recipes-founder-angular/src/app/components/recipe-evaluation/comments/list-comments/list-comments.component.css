@@ -1,0 +1,12 @@
+.sent-message-card{
+    background-color: azure;
+    margin-bottom: 5%;
+    padding: 45px;
+    border-radius: 3rem;
+}
+
+.h5{
+    font-weight: bold;
+    font-size: 50px;
+    
+}

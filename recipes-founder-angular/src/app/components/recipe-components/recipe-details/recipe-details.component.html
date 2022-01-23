@@ -1,6 +1,7 @@
-<div class="container">
+<div class="container" style="margin-bottom: 5%;">
   <div class="jumbotron color">
     <h2>{{recipe.title}}</h2>
+    <mat-divider></mat-divider>
     <div class="row ">
       <p class="subtitle">
         <mat-icon>user</mat-icon><strong> Author</strong> {{recipe.username}}
@@ -22,21 +23,27 @@
           </mat-chip>
         </mat-chip-list>
       </div>
+      
+      <div class="subtitle" style="color:green;margin: 2%;">
+        <mat-icon>thumb_up_alt</mat-icon>{{rating.likes}}<mat-icon>favorite</mat-icon>{{rating.hearts}}<mat-icon>thumb_down_alt</mat-icon>{{rating.dislikes}}
+      </div>
     </div>
   </div>
 
   <div class="col-md-6" *ngIf="recipe.summary!=null ||recipe.summary!='' ">
     <h5>Summary</h5>
+    <mat-divider></mat-divider>
     <div class="row">
       <p class="summary-text-style" [innerHTML]="recipe.summary"></p>
     </div>
   </div>
-  <div class="col-md-6">
-    <img [src]="recipe.image" width="600px">
+  <div class="col-md-6" style="margin-top: 3%;">
+    <img [src]="recipe.image" width="550px">
   </div>
 
   <div class="col-md-12" *ngIf="!noSteps">
     <h5>Ingredients</h5>
+    <mat-divider></mat-divider>
     <ul *ngFor="let ingredient of recipe.extendedIngredients">
       <li *ngIf="!isExternal">{{ingredient.original}} ({{ingredient.measures.metric.amount}}
         {{ingredient.measures.metric.unitShort}}
@@ -46,12 +53,13 @@
   </div>
   <div class="col-md-12" *ngIf="isExternal">
     <h5>Preparation</h5>
+    <mat-divider></mat-divider>
     <p class="summary-text-style"> {{recipe.preparationDescription}}</p>
   </div>
   <div class="col-md-12">
     <img [src]="recipe.imageSteps" width="1000px">
   </div>
-  <!--     <div class="col-md-12">
-        <app-recipe-evaluation [recipeId]="id" [isExternal]="true"></app-recipe-evaluation>
-    </div> -->
+  <div class="col-md-12" >
+    <app-list-comments [recipe]="recipeOverviewInfoModule"></app-list-comments>
+  </div>
 </div>

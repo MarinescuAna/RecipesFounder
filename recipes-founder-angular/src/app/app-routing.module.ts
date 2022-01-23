@@ -9,6 +9,7 @@ import { MainShoppingListComponent } from './components/shopping-list/main-shopp
 import { UserProfileComponent } from './components/account/user-profile/user-profile.component';
 import { AuthGuard } from './shared/auth.guard';
 import { CreateRecipeComponent } from './components/recipe-components/create-recipe/create-recipe.component';
+import { FavoriteComponent } from './components/recipe-components/favorite/favorite.component';
 
 const routes: Routes = [
   {
@@ -41,6 +42,11 @@ const routes: Routes = [
   {
     path:'details',
     component: RecipeDetailsComponent
+  },
+  {
+    path:'favorite',
+    component: FavoriteComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: '',

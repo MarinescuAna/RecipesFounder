@@ -1,36 +1,29 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\a.marinescu\\Desktop\\New folder\\RecipiesFounder\\RecipiesFounder.csproj": {}
+    "C:\\Users\\marin\\OneDrive\\Documente\\GitHub\\RecipesFounder\\RecipiesFounder\\RecipiesFounder.csproj": {}
   },
   "projects": {
-    "C:\\Users\\a.marinescu\\Desktop\\New folder\\ApplicationLoggerLibrary\\ApplicationLoggerLibrary.csproj": {
+    "C:\\Users\\marin\\OneDrive\\Documente\\GitHub\\RecipesFounder\\ApplicationLoggerLibrary\\ApplicationLoggerLibrary.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\a.marinescu\\Desktop\\New folder\\ApplicationLoggerLibrary\\ApplicationLoggerLibrary.csproj",
+        "projectUniqueName": "C:\\Users\\marin\\OneDrive\\Documente\\GitHub\\RecipesFounder\\ApplicationLoggerLibrary\\ApplicationLoggerLibrary.csproj",
         "projectName": "ApplicationLoggerLibrary",
-        "projectPath": "C:\\Users\\a.marinescu\\Desktop\\New folder\\ApplicationLoggerLibrary\\ApplicationLoggerLibrary.csproj",
-        "packagesPath": "C:\\Users\\a.marinescu\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\a.marinescu\\Desktop\\New folder\\ApplicationLoggerLibrary\\obj\\",
+        "projectPath": "C:\\Users\\marin\\OneDrive\\Documente\\GitHub\\RecipesFounder\\ApplicationLoggerLibrary\\ApplicationLoggerLibrary.csproj",
+        "packagesPath": "C:\\Users\\marin\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\marin\\OneDrive\\Documente\\GitHub\\RecipesFounder\\ApplicationLoggerLibrary\\obj\\",
         "projectStyle": "PackageReference",
-<<<<<<< HEAD
-        "configFilePaths": [
-          "C:\\Users\\a.marinescu\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 19.1.config",
-=======
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
           "C:\\Users\\marin\\AppData\\Roaming\\NuGet\\NuGet.Config",
->>>>>>> e2301d1754cbcae0eef632bc050d9c63e2bbb58c
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\DevExpress 19.1\\Components\\System\\Components\\Packages": {},
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
@@ -84,33 +77,26 @@
         }
       }
     },
-    "C:\\Users\\a.marinescu\\Desktop\\New folder\\RecipesFounder.AplicationLogic.Repository\\RecipesFounder.AplicationLogic.Repository.csproj": {
+    "C:\\Users\\marin\\OneDrive\\Documente\\GitHub\\RecipesFounder\\RecipesFounder.AplicationLogic.Repository\\RecipesFounder.AplicationLogic.Repository.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\a.marinescu\\Desktop\\New folder\\RecipesFounder.AplicationLogic.Repository\\RecipesFounder.AplicationLogic.Repository.csproj",
+        "projectUniqueName": "C:\\Users\\marin\\OneDrive\\Documente\\GitHub\\RecipesFounder\\RecipesFounder.AplicationLogic.Repository\\RecipesFounder.AplicationLogic.Repository.csproj",
         "projectName": "RecipesFounder.AplicationLogic.Repository",
-        "projectPath": "C:\\Users\\a.marinescu\\Desktop\\New folder\\RecipesFounder.AplicationLogic.Repository\\RecipesFounder.AplicationLogic.Repository.csproj",
-        "packagesPath": "C:\\Users\\a.marinescu\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\a.marinescu\\Desktop\\New folder\\RecipesFounder.AplicationLogic.Repository\\obj\\",
+        "projectPath": "C:\\Users\\marin\\OneDrive\\Documente\\GitHub\\RecipesFounder\\RecipesFounder.AplicationLogic.Repository\\RecipesFounder.AplicationLogic.Repository.csproj",
+        "packagesPath": "C:\\Users\\marin\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\marin\\OneDrive\\Documente\\GitHub\\RecipesFounder\\RecipesFounder.AplicationLogic.Repository\\obj\\",
         "projectStyle": "PackageReference",
-<<<<<<< HEAD
-        "configFilePaths": [
-          "C:\\Users\\a.marinescu\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 19.1.config",
-=======
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
           "C:\\Users\\marin\\AppData\\Roaming\\NuGet\\NuGet.Config",
->>>>>>> e2301d1754cbcae0eef632bc050d9c63e2bbb58c
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\DevExpress 19.1\\Components\\System\\Components\\Packages": {},
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
@@ -118,11 +104,11 @@
           "netcoreapp3.1": {
             "targetAlias": "netcoreapp3.1",
             "projectReferences": {
-              "C:\\Users\\a.marinescu\\Desktop\\New folder\\ApplicationLoggerLibrary\\ApplicationLoggerLibrary.csproj": {
-                "projectPath": "C:\\Users\\a.marinescu\\Desktop\\New folder\\ApplicationLoggerLibrary\\ApplicationLoggerLibrary.csproj"
+              "C:\\Users\\marin\\OneDrive\\Documente\\GitHub\\RecipesFounder\\ApplicationLoggerLibrary\\ApplicationLoggerLibrary.csproj": {
+                "projectPath": "C:\\Users\\marin\\OneDrive\\Documente\\GitHub\\RecipesFounder\\ApplicationLoggerLibrary\\ApplicationLoggerLibrary.csproj"
               },
-              "C:\\Users\\a.marinescu\\Desktop\\New folder\\RecipesFounder.DataAccessLayer.Repository\\RecipesFounder.DataAccessLayer.Repository.csproj": {
-                "projectPath": "C:\\Users\\a.marinescu\\Desktop\\New folder\\RecipesFounder.DataAccessLayer.Repository\\RecipesFounder.DataAccessLayer.Repository.csproj"
+              "C:\\Users\\marin\\OneDrive\\Documente\\GitHub\\RecipesFounder\\RecipesFounder.DataAccessLayer.Repository\\RecipesFounder.DataAccessLayer.Repository.csproj": {
+                "projectPath": "C:\\Users\\marin\\OneDrive\\Documente\\GitHub\\RecipesFounder\\RecipesFounder.DataAccessLayer.Repository\\RecipesFounder.DataAccessLayer.Repository.csproj"
               }
             }
           }
@@ -161,33 +147,26 @@
         }
       }
     },
-    "C:\\Users\\a.marinescu\\Desktop\\New folder\\RecipesFounder.AplicationLogic.Service\\RecipesFounder.AplicationLogic.Service.csproj": {
+    "C:\\Users\\marin\\OneDrive\\Documente\\GitHub\\RecipesFounder\\RecipesFounder.AplicationLogic.Service\\RecipesFounder.AplicationLogic.Service.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\a.marinescu\\Desktop\\New folder\\RecipesFounder.AplicationLogic.Service\\RecipesFounder.AplicationLogic.Service.csproj",
+        "projectUniqueName": "C:\\Users\\marin\\OneDrive\\Documente\\GitHub\\RecipesFounder\\RecipesFounder.AplicationLogic.Service\\RecipesFounder.AplicationLogic.Service.csproj",
         "projectName": "RecipesFounder.AplicationLogic.Service",
-        "projectPath": "C:\\Users\\a.marinescu\\Desktop\\New folder\\RecipesFounder.AplicationLogic.Service\\RecipesFounder.AplicationLogic.Service.csproj",
-        "packagesPath": "C:\\Users\\a.marinescu\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\a.marinescu\\Desktop\\New folder\\RecipesFounder.AplicationLogic.Service\\obj\\",
+        "projectPath": "C:\\Users\\marin\\OneDrive\\Documente\\GitHub\\RecipesFounder\\RecipesFounder.AplicationLogic.Service\\RecipesFounder.AplicationLogic.Service.csproj",
+        "packagesPath": "C:\\Users\\marin\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\marin\\OneDrive\\Documente\\GitHub\\RecipesFounder\\RecipesFounder.AplicationLogic.Service\\obj\\",
         "projectStyle": "PackageReference",
-<<<<<<< HEAD
-        "configFilePaths": [
-          "C:\\Users\\a.marinescu\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 19.1.config",
-=======
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
           "C:\\Users\\marin\\AppData\\Roaming\\NuGet\\NuGet.Config",
->>>>>>> e2301d1754cbcae0eef632bc050d9c63e2bbb58c
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\DevExpress 19.1\\Components\\System\\Components\\Packages": {},
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
@@ -195,8 +174,8 @@
           "netcoreapp3.1": {
             "targetAlias": "netcoreapp3.1",
             "projectReferences": {
-              "C:\\Users\\a.marinescu\\Desktop\\New folder\\RecipesFounder.AplicationLogic.Repository\\RecipesFounder.AplicationLogic.Repository.csproj": {
-                "projectPath": "C:\\Users\\a.marinescu\\Desktop\\New folder\\RecipesFounder.AplicationLogic.Repository\\RecipesFounder.AplicationLogic.Repository.csproj"
+              "C:\\Users\\marin\\OneDrive\\Documente\\GitHub\\RecipesFounder\\RecipesFounder.AplicationLogic.Repository\\RecipesFounder.AplicationLogic.Repository.csproj": {
+                "projectPath": "C:\\Users\\marin\\OneDrive\\Documente\\GitHub\\RecipesFounder\\RecipesFounder.AplicationLogic.Repository\\RecipesFounder.AplicationLogic.Repository.csproj"
               }
             }
           }
@@ -241,33 +220,26 @@
         }
       }
     },
-    "C:\\Users\\a.marinescu\\Desktop\\New folder\\RecipesFounder.DataAccessLayer.Domain\\RecipesFounder.DataAccessLayer.Domain.csproj": {
+    "C:\\Users\\marin\\OneDrive\\Documente\\GitHub\\RecipesFounder\\RecipesFounder.DataAccessLayer.Domain\\RecipesFounder.DataAccessLayer.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\a.marinescu\\Desktop\\New folder\\RecipesFounder.DataAccessLayer.Domain\\RecipesFounder.DataAccessLayer.Domain.csproj",
+        "projectUniqueName": "C:\\Users\\marin\\OneDrive\\Documente\\GitHub\\RecipesFounder\\RecipesFounder.DataAccessLayer.Domain\\RecipesFounder.DataAccessLayer.Domain.csproj",
         "projectName": "RecipesFounder.DataAccessLayer.Domain",
-        "projectPath": "C:\\Users\\a.marinescu\\Desktop\\New folder\\RecipesFounder.DataAccessLayer.Domain\\RecipesFounder.DataAccessLayer.Domain.csproj",
-        "packagesPath": "C:\\Users\\a.marinescu\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\a.marinescu\\Desktop\\New folder\\RecipesFounder.DataAccessLayer.Domain\\obj\\",
+        "projectPath": "C:\\Users\\marin\\OneDrive\\Documente\\GitHub\\RecipesFounder\\RecipesFounder.DataAccessLayer.Domain\\RecipesFounder.DataAccessLayer.Domain.csproj",
+        "packagesPath": "C:\\Users\\marin\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\marin\\OneDrive\\Documente\\GitHub\\RecipesFounder\\RecipesFounder.DataAccessLayer.Domain\\obj\\",
         "projectStyle": "PackageReference",
-<<<<<<< HEAD
-        "configFilePaths": [
-          "C:\\Users\\a.marinescu\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 19.1.config",
-=======
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
           "C:\\Users\\marin\\AppData\\Roaming\\NuGet\\NuGet.Config",
->>>>>>> e2301d1754cbcae0eef632bc050d9c63e2bbb58c
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\DevExpress 19.1\\Components\\System\\Components\\Packages": {},
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
@@ -311,33 +283,26 @@
         }
       }
     },
-    "C:\\Users\\a.marinescu\\Desktop\\New folder\\RecipesFounder.DataAccessLayer.Repository\\RecipesFounder.DataAccessLayer.Repository.csproj": {
+    "C:\\Users\\marin\\OneDrive\\Documente\\GitHub\\RecipesFounder\\RecipesFounder.DataAccessLayer.Repository\\RecipesFounder.DataAccessLayer.Repository.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\a.marinescu\\Desktop\\New folder\\RecipesFounder.DataAccessLayer.Repository\\RecipesFounder.DataAccessLayer.Repository.csproj",
+        "projectUniqueName": "C:\\Users\\marin\\OneDrive\\Documente\\GitHub\\RecipesFounder\\RecipesFounder.DataAccessLayer.Repository\\RecipesFounder.DataAccessLayer.Repository.csproj",
         "projectName": "RecipesFounder.DataAccessLayer.Repository",
-        "projectPath": "C:\\Users\\a.marinescu\\Desktop\\New folder\\RecipesFounder.DataAccessLayer.Repository\\RecipesFounder.DataAccessLayer.Repository.csproj",
-        "packagesPath": "C:\\Users\\a.marinescu\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\a.marinescu\\Desktop\\New folder\\RecipesFounder.DataAccessLayer.Repository\\obj\\",
+        "projectPath": "C:\\Users\\marin\\OneDrive\\Documente\\GitHub\\RecipesFounder\\RecipesFounder.DataAccessLayer.Repository\\RecipesFounder.DataAccessLayer.Repository.csproj",
+        "packagesPath": "C:\\Users\\marin\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\marin\\OneDrive\\Documente\\GitHub\\RecipesFounder\\RecipesFounder.DataAccessLayer.Repository\\obj\\",
         "projectStyle": "PackageReference",
-<<<<<<< HEAD
-        "configFilePaths": [
-          "C:\\Users\\a.marinescu\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 19.1.config",
-=======
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
           "C:\\Users\\marin\\AppData\\Roaming\\NuGet\\NuGet.Config",
->>>>>>> e2301d1754cbcae0eef632bc050d9c63e2bbb58c
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\DevExpress 19.1\\Components\\System\\Components\\Packages": {},
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
@@ -345,8 +310,8 @@
           "netcoreapp3.1": {
             "targetAlias": "netcoreapp3.1",
             "projectReferences": {
-              "C:\\Users\\a.marinescu\\Desktop\\New folder\\RecipesFounder.DataAccessLayer.Domain\\RecipesFounder.DataAccessLayer.Domain.csproj": {
-                "projectPath": "C:\\Users\\a.marinescu\\Desktop\\New folder\\RecipesFounder.DataAccessLayer.Domain\\RecipesFounder.DataAccessLayer.Domain.csproj"
+              "C:\\Users\\marin\\OneDrive\\Documente\\GitHub\\RecipesFounder\\RecipesFounder.DataAccessLayer.Domain\\RecipesFounder.DataAccessLayer.Domain.csproj": {
+                "projectPath": "C:\\Users\\marin\\OneDrive\\Documente\\GitHub\\RecipesFounder\\RecipesFounder.DataAccessLayer.Domain\\RecipesFounder.DataAccessLayer.Domain.csproj"
               }
             }
           }
@@ -395,33 +360,26 @@
         }
       }
     },
-    "C:\\Users\\a.marinescu\\Desktop\\New folder\\RecipiesFounder\\RecipiesFounder.csproj": {
+    "C:\\Users\\marin\\OneDrive\\Documente\\GitHub\\RecipesFounder\\RecipiesFounder\\RecipiesFounder.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\a.marinescu\\Desktop\\New folder\\RecipiesFounder\\RecipiesFounder.csproj",
+        "projectUniqueName": "C:\\Users\\marin\\OneDrive\\Documente\\GitHub\\RecipesFounder\\RecipiesFounder\\RecipiesFounder.csproj",
         "projectName": "RecipiesFounder",
-        "projectPath": "C:\\Users\\a.marinescu\\Desktop\\New folder\\RecipiesFounder\\RecipiesFounder.csproj",
-        "packagesPath": "C:\\Users\\a.marinescu\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\a.marinescu\\Desktop\\New folder\\RecipiesFounder\\obj\\",
+        "projectPath": "C:\\Users\\marin\\OneDrive\\Documente\\GitHub\\RecipesFounder\\RecipiesFounder\\RecipiesFounder.csproj",
+        "packagesPath": "C:\\Users\\marin\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\marin\\OneDrive\\Documente\\GitHub\\RecipesFounder\\RecipiesFounder\\obj\\",
         "projectStyle": "PackageReference",
-<<<<<<< HEAD
-        "configFilePaths": [
-          "C:\\Users\\a.marinescu\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 19.1.config",
-=======
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
           "C:\\Users\\marin\\AppData\\Roaming\\NuGet\\NuGet.Config",
->>>>>>> e2301d1754cbcae0eef632bc050d9c63e2bbb58c
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\DevExpress 19.1\\Components\\System\\Components\\Packages": {},
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
@@ -429,28 +387,20 @@
           "netcoreapp3.1": {
             "targetAlias": "netcoreapp3.1",
             "projectReferences": {
-              "C:\\Users\\a.marinescu\\Desktop\\New folder\\ApplicationLoggerLibrary\\ApplicationLoggerLibrary.csproj": {
-                "projectPath": "C:\\Users\\a.marinescu\\Desktop\\New folder\\ApplicationLoggerLibrary\\ApplicationLoggerLibrary.csproj"
+              "C:\\Users\\marin\\OneDrive\\Documente\\GitHub\\RecipesFounder\\ApplicationLoggerLibrary\\ApplicationLoggerLibrary.csproj": {
+                "projectPath": "C:\\Users\\marin\\OneDrive\\Documente\\GitHub\\RecipesFounder\\ApplicationLoggerLibrary\\ApplicationLoggerLibrary.csproj"
               },
-              "C:\\Users\\a.marinescu\\Desktop\\New folder\\RecipesFounder.AplicationLogic.Repository\\RecipesFounder.AplicationLogic.Repository.csproj": {
-                "projectPath": "C:\\Users\\a.marinescu\\Desktop\\New folder\\RecipesFounder.AplicationLogic.Repository\\RecipesFounder.AplicationLogic.Repository.csproj"
+              "C:\\Users\\marin\\OneDrive\\Documente\\GitHub\\RecipesFounder\\RecipesFounder.AplicationLogic.Repository\\RecipesFounder.AplicationLogic.Repository.csproj": {
+                "projectPath": "C:\\Users\\marin\\OneDrive\\Documente\\GitHub\\RecipesFounder\\RecipesFounder.AplicationLogic.Repository\\RecipesFounder.AplicationLogic.Repository.csproj"
               },
-              "C:\\Users\\a.marinescu\\Desktop\\New folder\\RecipesFounder.AplicationLogic.Service\\RecipesFounder.AplicationLogic.Service.csproj": {
-                "projectPath": "C:\\Users\\a.marinescu\\Desktop\\New folder\\RecipesFounder.AplicationLogic.Service\\RecipesFounder.AplicationLogic.Service.csproj"
+              "C:\\Users\\marin\\OneDrive\\Documente\\GitHub\\RecipesFounder\\RecipesFounder.AplicationLogic.Service\\RecipesFounder.AplicationLogic.Service.csproj": {
+                "projectPath": "C:\\Users\\marin\\OneDrive\\Documente\\GitHub\\RecipesFounder\\RecipesFounder.AplicationLogic.Service\\RecipesFounder.AplicationLogic.Service.csproj"
               },
-              "C:\\Users\\a.marinescu\\Desktop\\New folder\\RecipesFounder.DataAccessLayer.Domain\\RecipesFounder.DataAccessLayer.Domain.csproj": {
-                "projectPath": "C:\\Users\\a.marinescu\\Desktop\\New folder\\RecipesFounder.DataAccessLayer.Domain\\RecipesFounder.DataAccessLayer.Domain.csproj"
-              },
-<<<<<<< HEAD
-              "C:\\Users\\a.marinescu\\Desktop\\New folder\\RecipesFounder.DataAccessLayer.Repository\\RecipesFounder.DataAccessLayer.Repository.csproj": {
-                "projectPath": "C:\\Users\\a.marinescu\\Desktop\\New folder\\RecipesFounder.DataAccessLayer.Repository\\RecipesFounder.DataAccessLayer.Repository.csproj"
-=======
               "C:\\Users\\marin\\OneDrive\\Documente\\GitHub\\RecipesFounder\\RecipesFounder.DataAccessLayer.Domain\\RecipesFounder.DataAccessLayer.Domain.csproj": {
                 "projectPath": "C:\\Users\\marin\\OneDrive\\Documente\\GitHub\\RecipesFounder\\RecipesFounder.DataAccessLayer.Domain\\RecipesFounder.DataAccessLayer.Domain.csproj"
               },
               "C:\\Users\\marin\\OneDrive\\Documente\\GitHub\\RecipesFounder\\RecipesFounder.DataAccessLayer.Repository\\RecipesFounder.DataAccessLayer.Repository.csproj": {
                 "projectPath": "C:\\Users\\marin\\OneDrive\\Documente\\GitHub\\RecipesFounder\\RecipesFounder.DataAccessLayer.Repository\\RecipesFounder.DataAccessLayer.Repository.csproj"
->>>>>>> e2301d1754cbcae0eef632bc050d9c63e2bbb58c
               }
             }
           }

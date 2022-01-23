@@ -46,8 +46,8 @@ export class RecipeService extends BaseExternalApiService {
     return super.getOne(url);
   }
   public MakePublic(id:string): any{
-    let url = `${environment.baseApiUrl}${this.controllerName}/MakePublic?id=${id}`;
-    return super.update(url,'');
+    let url = `${environment.baseApiUrl}${this.controllerName}/MakePublic`;
+    return super.update(url,{'id':id});
   }
   public GetUserRecipies(email:string): any{
     let url = `${environment.baseApiUrl}${this.controllerName}/GetUserRecipies?email=${email}`;

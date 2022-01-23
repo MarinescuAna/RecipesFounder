@@ -52,6 +52,9 @@ export class AuthService extends BaseService {
   }
 
   isLogged(): boolean{
+    console.log(`Info: is_logged = ${localStorage.getItem('is_logged')}`);  
+    console.log(`Info: access_token = ${localStorage.getItem('access_token')}`);  
+    console.log(`Info: refresh_token = ${localStorage.getItem('refresh_token')}`);  
     return localStorage.getItem('is_logged')==='true';
   }
 

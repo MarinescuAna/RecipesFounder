@@ -18,7 +18,6 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatChipsModule} from '@angular/material/chips';
 import { ToastrModule } from 'ngx-toastr';
 import { AlertService } from './services/alert.service';
-import { RecipeEvaluationComponent } from './components/recipe-evaluation/recipe-evaluation.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -35,6 +34,9 @@ import {MatSelectModule} from '@angular/material/select';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatButtonModule} from '@angular/material/button';
+import {MatDividerModule} from '@angular/material/divider';
+import { ProfilePageComponent } from './components/account/profile-page/profile-page.component';
+import { FavoriteComponent } from './components/recipe-components/favorite/favorite.component';
 
 export function tokenGetter() {
   return localStorage.getItem('access_token');
@@ -52,12 +54,14 @@ export function tokenGetter() {
     MyRecipeComponent,
     CreateRecipeComponent,
     RecipeDetailsComponent,
-    RecipeEvaluationComponent,
     UserProfileComponent,
     ListCommentsComponent,
-    CommentComponent
+    CommentComponent,
+    ProfilePageComponent,
+    FavoriteComponent
   ],
   imports: [
+    MatDividerModule,
     BrowserModule,
     MatFormFieldModule,
     HttpClientModule,

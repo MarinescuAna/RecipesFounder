@@ -15,7 +15,7 @@ export class UserProfileComponent implements OnInit {
   constructor(private serviceRecipe: RecipeService,private authService:AuthService) { }
 
   ngOnInit(): void {
-    this.serviceRecipe.GetUserRecipies(this.authService.decodeJWToken('unique_name')).subscribe(cr => {
+    this.serviceRecipe.GetUserRecipies(this.authService.decodeJWToken('email')).subscribe(cr => {
       let list2 = cr as RecipeGetModule[];
       this.list.results=[];
       list2.forEach(element =>{

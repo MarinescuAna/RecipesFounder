@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace RecipesFounder.DataAccessLayer.Repository.Migrations
 {
-    public partial class UpdateDatabase : Migration
+    public partial class RatingChanges : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -69,29 +69,6 @@ namespace RecipesFounder.DataAccessLayer.Repository.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Ratings",
-                columns: table => new
-                {
-                    RatingID = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    RecipeID = table.Column<string>(nullable: true),
-                    ExternalRecipe = table.Column<string>(nullable: true),
-                    Hearts = table.Column<int>(nullable: false),
-                    Likes = table.Column<int>(nullable: false),
-                    Unlikes = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Ratings", x => x.RatingID);
-                    table.ForeignKey(
-                        name: "FK_Ratings_Recipes_RecipeID",
-                        column: x => x.RecipeID,
-                        principalTable: "Recipes",
-                        principalColumn: "RecipeID",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Comments",
                 columns: table => new
                 {
@@ -99,8 +76,8 @@ namespace RecipesFounder.DataAccessLayer.Repository.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     RecipeID = table.Column<string>(nullable: true),
                     ExternalRecipe = table.Column<string>(nullable: true),
-                    Content = table.Column<string>(nullable: true),
                     UserID = table.Column<string>(nullable: true),
+                    Content = table.Column<string>(nullable: true),
                     AddedDateTime = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
@@ -147,6 +124,36 @@ namespace RecipesFounder.DataAccessLayer.Repository.Migrations
                         onDelete: ReferentialAction.Restrict);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Ratings",
+                columns: table => new
+                {
+                    RatingID = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    RecipeID = table.Column<string>(nullable: true),
+                    ExternalRecipe = table.Column<string>(nullable: true),
+                    UserID = table.Column<string>(nullable: true),
+                    Hearts = table.Column<bool>(nullable: false),
+                    Likes = table.Column<bool>(nullable: false),
+                    Dislikes = table.Column<bool>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Ratings", x => x.RatingID);
+                    table.ForeignKey(
+                        name: "FK_Ratings_Recipes_RecipeID",
+                        column: x => x.RecipeID,
+                        principalTable: "Recipes",
+                        principalColumn: "RecipeID",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Ratings_Users_UserID",
+                        column: x => x.UserID,
+                        principalTable: "Users",
+                        principalColumn: "Email",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_Comments_RecipeID",
                 table: "Comments",
@@ -176,6 +183,11 @@ namespace RecipesFounder.DataAccessLayer.Repository.Migrations
                 name: "IX_Ratings_RecipeID",
                 table: "Ratings",
                 column: "RecipeID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Ratings_UserID",
+                table: "Ratings",
+                column: "UserID");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -193,10 +205,10 @@ namespace RecipesFounder.DataAccessLayer.Repository.Migrations
                 name: "Ratings");
 
             migrationBuilder.DropTable(
-                name: "Users");
+                name: "Recipes");
 
             migrationBuilder.DropTable(
-                name: "Recipes");
+                name: "Users");
         }
     }
 }

@@ -11,8 +11,5 @@ namespace RecipesFounder.DataAccessLayer.Domain.Domain
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int FavoriteID { get; set; }
-        [ForeignKey("User")]
-        public string UserID { get; set; }
-        public User User { get; set; }
     }
 }

@@ -13,6 +13,7 @@ export class RecipeFullDataModule{
     vegetarian: boolean;
     summary:  string;
     isExternal:boolean;
+    email:string;
     username: string;
     preparationDescription: string;
     imageSteps:string;

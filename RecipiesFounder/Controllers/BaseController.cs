@@ -14,11 +14,9 @@ namespace RecipiesFounder.Controllers
     public class BaseController : ControllerBase
     {
         protected IUnitOfWorkForServices _unitOfWorkForServices;
-        private readonly IHttpContextAccessor _httpContextAccessor;
-        public BaseController(IUnitOfWorkForServices unitOfWorkForServices, IHttpContextAccessor httpContextAccessor = null)
+        public BaseController(IUnitOfWorkForServices unitOfWorkForServices)
         {
             _unitOfWorkForServices = unitOfWorkForServices;
-            _httpContextAccessor = httpContextAccessor;
         }
         protected string ExtractEmailFromJWT()
         {

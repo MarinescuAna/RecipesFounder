@@ -9,5 +9,6 @@ namespace RecipesFounder.DataAccessLayer.Domain.DomainDTO
         public string Content { get; set; }
         public string RecipeID { get; set; }
         public bool IsExternal { get; set; }
+        public string User { get; set; }
     }
 }

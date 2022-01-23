@@ -1,5 +1,6 @@
 export class CommentInsert{
     content: string;
-    recipeID: number;
+    recipeID: string;
     isExternal: boolean;
+    user: string;
 }

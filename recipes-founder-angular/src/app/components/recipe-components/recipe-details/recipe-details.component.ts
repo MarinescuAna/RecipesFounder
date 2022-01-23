@@ -6,6 +6,8 @@ import { RecipeDetailsModule } from 'src/app/modules/recipe-details.module';
 import { RecipeFullDataModule } from 'src/app/modules/recipe-full-data.module';
 import { RecipeOverviewInfoModule } from 'src/app/modules/recipe-overview-info.module';
 import { RecipeService, StepImageModule } from 'src/app/services/recipe.service';
+import { RatingGetModule } from 'src/app/modules/rating-get.module';
+import { RatingService } from 'src/app/services/rating.service';
 
 @Component({
   selector: 'app-recipe-details',
@@ -16,23 +18,29 @@ import { RecipeService, StepImageModule } from 'src/app/services/recipe.service'
 })
 export class RecipeDetailsComponent implements OnInit {
 
+  rating=new RatingGetModule();
   recipe= new RecipeFullDataModule();
   recipeOverviewInfoModule: RecipeOverviewInfoModule;
   tags: string[] = [];
   noSteps = false;
   isExternal=false;
-  constructor(private route: ActivatedRoute, private recipService: RecipeService) { }
+  constructor(private route: ActivatedRoute, private recipService: RecipeService, private ratingService:RatingService) { }
 
   ngOnInit(): void {
     this.route.queryParams.subscribe(
       params => {
         this.recipeOverviewInfoModule = params as RecipeOverviewInfoModule;
         this.isExternal=this.recipeOverviewInfoModule.isExternal;
-        if (this.recipeOverviewInfoModule.isExternal===true) {
-         this.GetRecipeInformation();
-        }else{
+        debugger
+        console.log(this.recipeOverviewInfoModule.isExternal)
+       // if (this.isExternal===false) {
           this.GetPublicRecipe();
-        }
+       // }else{
+      //    this.GetRecipeInformation();
+      //  }
+        this.ratingService.GetRating(this.recipeOverviewInfoModule.id,this.recipeOverviewInfoModule.isExternal).subscribe(cr =>{
+          this.rating=cr as RatingGetModule;
+        });
       }
     );
   }
@@ -44,7 +52,7 @@ export class RecipeDetailsComponent implements OnInit {
         this.SetTags();
     },
     err => {
-      this.recipService.alertService.showError(err.message);
+      this.GetRecipeInformation();
     });
   }
 

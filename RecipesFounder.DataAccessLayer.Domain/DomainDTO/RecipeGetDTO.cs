@@ -10,6 +10,7 @@ namespace RecipesFounder.DataAccessLayer.Domain.DomainDTO
         public string Title { get; set; }
         public string Image { get; set; }
         public string Username { get; set; }
+        public string Email { get; set; }
         public int Servings { get; set; }
         public int ReadyInMinutes { get; set; }
         public int HealtyScore { get; set; }

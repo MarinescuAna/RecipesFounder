@@ -12,9 +12,7 @@ namespace RecipesFounder.DataAccessLayer.Domain.Domain
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int CommentID { get; set; }
         public string Content { get; set; }
-        [ForeignKey("User")]
-        public string UserID { get; set; }
-        public User User { get; set; }
+
         public DateTime AddedDateTime { get; set; }
     }
 }

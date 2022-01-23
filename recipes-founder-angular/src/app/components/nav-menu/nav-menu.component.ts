@@ -14,6 +14,7 @@ export class NavMenuComponent implements OnInit {
   constructor(private service:AuthService) { }
 
   ngOnInit(): void {
+    console.log("Info: The menu is instantiated. Try to check if the user is logged!");
     this.isLogged=this.service.isLogged();
   }
 

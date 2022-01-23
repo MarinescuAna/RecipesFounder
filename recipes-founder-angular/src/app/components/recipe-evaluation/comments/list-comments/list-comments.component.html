@@ -1,12 +1,15 @@
-<div class="row">
-        <app-comment class="col-md-4" *ngFor="let comment of comments" [comment]='comment'></app-comment>
+<h5 class="h5">Comments</h5>
+<div class="column">
+        <div fxLayout="column">
+                <app-comment class="col-md-4" *ngFor="let comment of comments" [comment]='comment'></app-comment>
+        </div>
 </div>
-<div>
+<div class=" sent-message-card" *ngIf="isLogged">
         <div class="form-group">
-                <form>
+                <form [formGroup]="form">
                         <textarea type="text" placeholder="Type message..." rows="4" class="form-control"
                                 formControlName='message'></textarea>
-                        <button class="btn" (click)="onSubmit()"
+                        <button class="btn btn-success" style="width: 17%; margin: 1%;" (click)="onSubmit()"
                                 [disabled]="form.controls['message'].hasError('required')">Sent</button>
                 </form>
         </div>

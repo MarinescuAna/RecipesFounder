@@ -10,5 +10,8 @@ namespace RecipesFounder.DataAccessLayer.Domain.Domain
         public string? RecipeID { get; set; }
         public Recipe? Recipe { get; set; }
         public string? ExternalRecipe { get; set; }
+        [ForeignKey("User")]
+        public string UserID { get; set; }
+        public User User { get; set; }
     }
 }
