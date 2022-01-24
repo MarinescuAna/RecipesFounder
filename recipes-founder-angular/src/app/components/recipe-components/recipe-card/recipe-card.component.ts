@@ -89,7 +89,7 @@ export class RecipeCardComponent implements OnInit {
       this.service.alertService.showError(err.message);
     });
   }
-
+  
   onNotFavorite():void{
     this.favoriteService.DeleteFavorite(this.recipe.idFavorite).subscribe(
       cr=>{

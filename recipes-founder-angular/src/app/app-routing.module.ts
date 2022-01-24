@@ -8,8 +8,13 @@ import { UserProfileComponent } from './components/account/user-profile/user-pro
 import { AuthGuard } from './shared/auth.guard';
 import { CreateRecipeComponent } from './components/recipe-components/create-recipe/create-recipe.component';
 import { FavoriteComponent } from './components/recipe-components/favorite/favorite.component';
+import { ProfilePageComponent } from './components/account/profile-page/profile-page.component';
 
 const routes: Routes = [
+  {
+    path: 'users',
+    component: ProfilePageComponent
+  },
   {
     path: 'profile',
     component: UserProfileComponent,

@@ -4,7 +4,7 @@
     <mat-divider></mat-divider>
     <div class="row ">
       <p class="subtitle">
-        <mat-icon>user</mat-icon><strong> Author</strong> {{recipe.username}}
+        <mat-icon>user</mat-icon><strong> Author</strong> <button class="btn btn-link" (click)="onRouteToUserProfile()">{{recipe.username}}</button> 
       </p>
       <p class="subtitle">
         <mat-icon>schedule</mat-icon><strong> Ready in</strong> {{recipe.readyInMinutes}}

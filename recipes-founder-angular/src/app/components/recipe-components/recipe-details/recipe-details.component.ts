@@ -1,7 +1,7 @@
 import { IngredientModule } from './../../../modules/ingredients.module';
 import { RecipeGetModule } from './../../../modules/recipe-get.module';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { RecipeDetailsModule } from 'src/app/modules/recipe-details.module';
 import { RecipeFullDataModule } from 'src/app/modules/recipe-full-data.module';
 import { RecipeOverviewInfoModule } from 'src/app/modules/recipe-overview-info.module';
@@ -18,41 +18,41 @@ import { RatingService } from 'src/app/services/rating.service';
 })
 export class RecipeDetailsComponent implements OnInit {
 
-  rating=new RatingGetModule();
-  recipe= new RecipeFullDataModule();
+  rating = new RatingGetModule();
+  recipe = new RecipeFullDataModule();
   recipeOverviewInfoModule: RecipeOverviewInfoModule;
   tags: string[] = [];
   noSteps = false;
-  isExternal=false;
-  constructor(private route: ActivatedRoute, private recipService: RecipeService, private ratingService:RatingService) { }
+  isExternal = false;
+  constructor(private router: Router, private route: ActivatedRoute, private recipService: RecipeService, private ratingService: RatingService) { }
 
   ngOnInit(): void {
     this.route.queryParams.subscribe(
       params => {
         this.recipeOverviewInfoModule = params as RecipeOverviewInfoModule;
-        this.isExternal=this.recipeOverviewInfoModule.isExternal;
+        this.isExternal = this.recipeOverviewInfoModule.isExternal;
         console.log(this.recipeOverviewInfoModule.isExternal)
-       // if (this.isExternal===false) {
-          this.GetPublicRecipe();
-       // }else{
-      //    this.GetRecipeInformation();
-      //  }
-        this.ratingService.GetRating(this.recipeOverviewInfoModule.id,this.recipeOverviewInfoModule.isExternal).subscribe(cr =>{
-          this.rating=cr as RatingGetModule;
+        // if (this.isExternal===false) {
+        this.GetPublicRecipe();
+        // }else{
+        //    this.GetRecipeInformation();
+        //  }
+        this.ratingService.GetRating(this.recipeOverviewInfoModule.id, this.recipeOverviewInfoModule.isExternal).subscribe(cr => {
+          this.rating = cr as RatingGetModule;
         });
       }
     );
   }
 
-  private GetPublicRecipe(){
-    this.recipService.GetPublicRecipie(this.recipeOverviewInfoModule.id).subscribe(cr =>{
-        let recipPublic=cr as RecipeGetModule;
-        this.SetRecipePublicDetailsModule(recipPublic);
-        this.SetTags();
+  private GetPublicRecipe() {
+    this.recipService.GetPublicRecipie(this.recipeOverviewInfoModule.id).subscribe(cr => {
+      let recipPublic = cr as RecipeGetModule;
+      this.SetRecipePublicDetailsModule(recipPublic);
+      this.SetTags();
     },
-    err => {
-      this.GetRecipeInformation();
-    });
+      err => {
+        this.GetRecipeInformation();
+      });
   }
 
   private GetRecipeInformation(): void {
@@ -63,18 +63,19 @@ export class RecipeDetailsComponent implements OnInit {
       err => {
         this.recipService.alertService.showError(err.message);
       });
-      this.recipe.imageSteps='';
-      this.recipService.GetStepsImage(this.recipeOverviewInfoModule.id).subscribe(cr => {
+    this.recipe.imageSteps = '';
+    this.recipService.GetStepsImage(this.recipeOverviewInfoModule.id).subscribe(cr => {
       this.recipe.imageSteps = (cr as StepImageModule).url;
     });
   }
 
-  private SetRecipePublicDetailsModule(recipe: RecipeGetModule){
-    this.recipe.id=recipe.id;
-    this.recipe.image=recipe.image;
-    this.recipe.title=recipe.title;
-    this.recipe.isExternal=false;
-    this.recipe.imageSteps=recipe.imageSteps;
+  private SetRecipePublicDetailsModule(recipe: RecipeGetModule) {
+    this.recipe.email=recipe.email;
+    this.recipe.id = recipe.id;
+    this.recipe.image = recipe.image;
+    this.recipe.title = recipe.title;
+    this.recipe.isExternal = false;
+    this.recipe.imageSteps = recipe.imageSteps;
     this.recipe.servings = recipe.servings;
     this.recipe.readyInMinutes = recipe.readyInMinutes;
     this.recipe.healthScore = recipe.healthScore;
@@ -83,13 +84,13 @@ export class RecipeDetailsComponent implements OnInit {
     this.recipe.vegan = recipe.vegan;
     this.recipe.vegetarian = recipe.vegetarian;
     this.recipe.summary = recipe.summary;
-    this.recipe.username=recipe.username;
-    this.recipe.preparationDescription=recipe.preparationDescription;
-    this.recipe.extendedIngredients=[];
+    this.recipe.username = recipe.username;
+    this.recipe.preparationDescription = recipe.preparationDescription;
+    this.recipe.extendedIngredients = [];
 
-    recipe.extendedIngredients.forEach(ing =>{
+    recipe.extendedIngredients.forEach(ing => {
       let ingredient = new IngredientModule;
-      ingredient.name=ing;
+      ingredient.name = ing;
       this.recipe.extendedIngredients.push(ingredient);
     });
   }
@@ -107,11 +108,11 @@ export class RecipeDetailsComponent implements OnInit {
     this.recipe.vegan = recipe.vegan;
     this.recipe.vegetarian = recipe.vegetarian;
     this.recipe.summary = recipe.summary;
-    this.recipe.username='Spoonacular';
-    this.recipe.preparationDescription='';
+    this.recipe.username = 'Spoonacular';
+    this.recipe.preparationDescription = '';
     this.recipe.extendedIngredients = recipe.extendedIngredients;
-    if(this.recipe.extendedIngredients==null || this.recipe.extendedIngredients.length==0){
-      this.noSteps=true;
+    if (this.recipe.extendedIngredients == null || this.recipe.extendedIngredients.length == 0) {
+      this.noSteps = true;
     }
   }
 
@@ -127,6 +128,17 @@ export class RecipeDetailsComponent implements OnInit {
     }
     if (this.recipe.ketogenic === true) {
       this.tags.push("Ketogenic");
+    }
+  }
+
+  onRouteToUserProfile(): void {
+    if (this.recipe.username == 'Spoonacular') {
+      this.recipService.alertService.showInfo("No profile availalble!");
+    } else {
+      let navigationExtras: NavigationExtras = {
+        queryParams: { email: this.recipe.email }
+      };
+      this.router.navigate(['/users'], navigationExtras);
     }
   }
 }

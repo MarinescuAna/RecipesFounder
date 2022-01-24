@@ -6,6 +6,7 @@ using RecipesFounder.AplicationLogic.Service.Interface;
 using RecipesFounder.AplicationLogic.Service.UnitOfWork;
 using RecipesFounder.DataAccessLayer.Domain.Domain;
 using RecipesFounder.DataAccessLayer.Domain.DomainDTO;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace RecipiesFounder.Controllers
@@ -19,6 +20,29 @@ namespace RecipiesFounder.Controllers
         public AccountController(IUnitOfWorkForServices unitOfWorkForServices,IJsonWebTokenService jsonWebTokenService) : base(unitOfWorkForServices)
         {
             _jsonWebTokenService = jsonWebTokenService;
+        }
+
+        [HttpGet]
+        [Route("/api/Account/GetUserInformation")]
+        [AllowAnonymous]
+        public async Task<IActionResult> GetUserInformation(string email)
+        {
+            if (string.IsNullOrEmpty(email))
+            {
+                return StatusCode(ErrorsAndMessages.Number_204, ErrorsAndMessages.NoContent);
+            }
+
+            var user = await _unitOfWorkForServices.UserService.GetUserByEmailAsync(email);
+            if (user == null)
+            {
+                return StatusCode(ErrorsAndMessages.Number_400, ErrorsAndMessages.SomethingWentWrong);
+            }
+
+            return Ok(new UserGetDTO { 
+                Email=user.Email,
+                Name=user.Name,
+                CreatedRecipies = (await _unitOfWorkForServices.RecipeService.GetAllRecipesByUserEmailAsync(email)).Where(u=>u.IsPublic).Count()
+            });
         }
 
         [HttpPost]

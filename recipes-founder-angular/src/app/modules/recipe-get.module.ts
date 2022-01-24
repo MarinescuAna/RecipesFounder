@@ -1,6 +1,7 @@
 
 
 export class RecipeGetModule{
+    email:string;
     id:string;
     title: string;
     image: string;

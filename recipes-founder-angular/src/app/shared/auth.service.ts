@@ -2,14 +2,15 @@ import { Injectable, Injector } from '@angular/core';
 import { Router } from '@angular/router';
 import { TokenModule } from '../modules/token.module';
 import { UserLoginModule } from '../modules/user-login.module';
-import { BaseService } from '../services/base.service';
 import {JwtHelperService} from '@auth0/angular-jwt';
 import { UserRegisterModule } from '../modules/user-register.module';
+import { BaseExternalApiService } from '../services/base-external-api.service';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthService extends BaseService {
+export class AuthService extends BaseExternalApiService {
   constructor(injector: Injector,private route: Router,private jwtDecode: JwtHelperService, ) {
     super(injector, 'Account');
   }
@@ -19,36 +20,14 @@ export class AuthService extends BaseService {
     localStorage.setItem('refresh_token', token.AccessTokenExp);
   }
 
-/*   public UpdateUserInfo(data:any):any{
-      return super.update('UpdateUserInfo', data);
-  }
-  
-  public ChangePassword(data:any):any{
-    return super.update('ChangePassword', data);
-} */
   public decodeJWToken(tag:string):string{
     const decode=this.jwtDecode.decodeToken(localStorage.getItem('access_token')!);
-    return decode==null? "":decode[tag];
-  }
-  
-  public decodeJWRefreshToken(tag:string):string{
-    const decode=this.jwtDecode.decodeToken(localStorage.getItem('refresh_token')!);
     return decode==null? "":decode[tag];
   }
 
   private removeLocalStorage(): void {
     localStorage.removeItem('access_token');
     localStorage.removeItem('refresh_token');
-  }
-
-  getToken(): any {
-    if (localStorage.getItem('access_token') !== null) {
-      let token = new TokenModule;
-      token.AccessToken=localStorage.getItem('access_token')!;
-       token.AccessTokenExp=localStorage.getItem('refresh_token')!; 
-      return token;
-    }
-    return null;
   }
 
   isLogged(): boolean{
@@ -65,8 +44,9 @@ export class AuthService extends BaseService {
   }
 
   register(user: UserRegisterModule): void {
+    let url = `${environment.baseApiUrl}${this.controllerName}/Register`;
     super
-    .post('Register', user)
+    .add(user,url)
     .subscribe(login => {
         this.setLocalStorage(login as TokenModule);
         localStorage.setItem('is_logged', 'true');
@@ -80,8 +60,9 @@ export class AuthService extends BaseService {
   }
 
   login(userCredentials: UserLoginModule): void {
+    let url = `${environment.baseApiUrl}${this.controllerName}/Login`;
     super
-    .post('Login', userCredentials)
+    .add(userCredentials,url)
     .subscribe(login => {
         this.setLocalStorage(login as TokenModule);
         localStorage.setItem('is_logged', 'true');
@@ -94,4 +75,8 @@ export class AuthService extends BaseService {
     });
   }
 
+  public GetUserInformation(email):any{
+    let url = `${environment.baseApiUrl}${this.controllerName}/GetUserInformation?email=${email}`;
+    return super.getOne(url);
+  }
 }

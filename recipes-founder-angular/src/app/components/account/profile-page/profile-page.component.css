@@ -1,0 +1,15 @@
+
+    .subtitle{
+    font-size: 15px;
+    color: green;
+    text-align: center;
+    }
+    .color{
+        background-color: azure !important;
+    }
+    h2{
+        text-align: center;
+        text-transform: uppercase;
+        font-weight: bold;
+        color: green;
+    }

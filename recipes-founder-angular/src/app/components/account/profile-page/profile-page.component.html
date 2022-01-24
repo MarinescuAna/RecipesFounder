@@ -1,1 +1,17 @@
-<p>profile-page works!</p>
+<div class="container" style="margin-bottom: 5%;">
+    <div class="jumbotron color">
+        <h2>{{user.name}}</h2>
+        <mat-divider></mat-divider>
+        <div class="row ">
+            <p class="subtitle">
+                <mat-icon>user</mat-icon><strong> Email</strong> {{user.email}}
+            </p>
+            <p class="subtitle">
+                <mat-icon>restaurant</mat-icon> <strong> Public recipies:</strong> {{user.createdRecipies}}
+            </p>
+        </div>
+    </div>
+</div>
+<div class="row" fxLayoutAlign="center center"  style="margin:1%">
+    <app-recipe-card class="col-md-4" *ngFor="let recipe of list" [deleteFavorite]='false' [recipe]='recipe'></app-recipe-card>
+</div>

@@ -198,5 +198,50 @@ namespace RecipiesFounder.Controllers
 
             return Ok(newList);
         }
+        [HttpGet]
+        [Route("/api/Recipe/GetUserPublicRecipies")]
+        [AllowAnonymous]
+        //TODO remove the email parameter 
+        public async Task<IActionResult> GetUserPublicRecipies(string email)
+        {
+            if (string.IsNullOrEmpty(email))
+            {
+                return StatusCode(ErrorsAndMessages.Number_204, ErrorsAndMessages.NoContent);
+            }
+
+            var list = (await _unitOfWorkForServices.RecipeService.GetAllRecipesByUserEmailAsync(email))?.Where(u=>u.IsPublic).ToList();
+            if (list == null)
+            {
+                return StatusCode(ErrorsAndMessages.Number_400, ErrorsAndMessages.SomethingWentWrong);
+            }
+
+            var newList = new List<RecipeGetDTO>();
+            list.ForEach(async recipe => {
+                newList.Add(
+                    new RecipeGetDTO
+                    {
+                        Email = recipe.UserID,
+                        Username = (await _unitOfWorkForServices.UserService.GetUserByEmailAsync(recipe.UserID)).Name,
+                        ExtendedIngredients = recipe.Ingredients?.Select(u => u.Name).ToArray(),
+                        GlutenFree = recipe.GlutenFree,
+                        HealtyScore = recipe.HealtyScore,
+                        Image = recipe.Image,
+                        ImageSteps = recipe.ImageSteps,
+                        Ketogenic = recipe.Ketogenic,
+                        PreparationDescription = recipe.PreparationDescription,
+                        ReadyInMinutes = recipe.ReadyInMinutes,
+                        Servings = recipe.Servings,
+                        Summary = recipe.Summary,
+                        Title = recipe.Title,
+                        Vegan = recipe.Vegan,
+                        IsPublic = recipe.IsPublic,
+                        Vegetarian = recipe.Vegetarian,
+                        Id = recipe.RecipeID
+                    });
+
+            });
+
+            return Ok(newList);
+        }
     }
 }
