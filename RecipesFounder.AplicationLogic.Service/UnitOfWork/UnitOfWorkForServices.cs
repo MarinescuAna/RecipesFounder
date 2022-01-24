@@ -14,6 +14,7 @@ namespace RecipesFounder.AplicationLogic.Service.UnitOfWork
         private ICommentService _commentService;
         private IRatingService _ratingService;
         private IRecipeService _recipeService;
+        private IFavoriteService _favoriteService;
         public UnitOfWorkForServices(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
@@ -65,6 +66,19 @@ namespace RecipesFounder.AplicationLogic.Service.UnitOfWork
                 }
 
                 return _recipeService;
+            }
+        }
+
+        public IFavoriteService FavoriteService
+        {
+            get
+            {
+                if (_favoriteService == null)
+                {
+                    _favoriteService = new FavoriteServiceImpl(_unitOfWork);
+                }
+
+                return _favoriteService;
             }
         }
     }

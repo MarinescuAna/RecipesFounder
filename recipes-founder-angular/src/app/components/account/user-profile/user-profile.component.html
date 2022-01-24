@@ -1,17 +1,8 @@
 <div class="container-custom">
-  <div class="alert alert-success search-bar">
-    <div fxLayout="row" fxLayoutAlign="space-evenly center">
-      <p style="text-align: center;"><a routerLink="/create" routerLinkActive="active" class="btn btn-success">Create Recipes</a></p>
-      <p style="text-align: center;">
-        <a routerLink="/shopping-list" routerLinkActive="active" class="btn btn-success">Shopping List</a>
-      </p>
-      <p style="text-align: center;">
-        <a routerLink="/favorite" routerLinkActive="active" class="btn btn-success">Favorites</a>
-      </p>
-    </div>
-  </div>
+  <app-menu></app-menu>
   <div class="row">
-    <app-recipe-card class="col-md-4" *ngFor="let recipe of list.results" [recipe]='recipe' [canBeModify]='true'>
+    <app-recipe-card class="col-md-4" *ngFor="let recipe of list.results" [disabledFavorite]='true'
+      [deleteFavorite]='false' [recipe]='recipe' [canBeModify]='true'>
     </app-recipe-card>
   </div>
 </div>

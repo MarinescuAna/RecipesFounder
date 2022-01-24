@@ -8,5 +8,6 @@ namespace RecipesFounder.AplicationLogic.Service.UnitOfWork
         ICommentService CommentService { get; }
         IRatingService RatingService { get; }
         IRecipeService RecipeService { get; }
+        IFavoriteService FavoriteService { get; }
     }
 }

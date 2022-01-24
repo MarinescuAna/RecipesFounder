@@ -1,9 +1,8 @@
 import { RecipeOverviewInfoModule } from './../../../modules/recipe-overview-info.module';
-import { RecipeGetModule } from './../../../modules/recipe-get.module';
 import { Component, OnInit } from '@angular/core';
-import { tap } from 'rxjs';
 import { RecipeModule } from 'src/app/modules/recipe.module';
 import { RecipeService } from 'src/app/services/recipe.service';
+import { RecipeGetCardModule } from 'src/app/modules/recipe-get-card.module';
 
 @Component({
   selector: 'app-recipe-list',
@@ -38,7 +37,7 @@ export class RecipeListComponent implements OnInit {
 
   private GetUsersRecipies():void{
     this.serviceRecipe.GetPublicRecipies().subscribe(cr => {
-      let list2 = cr as RecipeGetModule[];
+      let list2 = cr as RecipeGetCardModule[];
       list2.forEach(element =>{
         let newRecipe = new RecipeOverviewInfoModule;
         newRecipe.id=element.id;

@@ -10,27 +10,28 @@ using System.Threading.Tasks;
 
 namespace RecipesFounder.AplicationLogic.Repository.Implementation
 {
-    public class BaseRepoImpl<T>: IBaseRepo<T> where T : class
+    public class BaseRepoImpl<T> : IBaseRepo<T> where T : class
     {
         protected RecipeFounderDbContext _dbContext;
         private readonly ILoggerService _applicationLogger;
-        public BaseRepoImpl(RecipeFounderDbContext recipeFounderDb_dbContext,ILoggerService loggerService)
+        public BaseRepoImpl(RecipeFounderDbContext recipeFounderDb_dbContext, ILoggerService loggerService)
         {
             _applicationLogger = loggerService;
             _dbContext = recipeFounderDb_dbContext;
         }
         public async Task<bool> DeleteItem(Expression<Func<T, bool>> expression)
         {
-            _applicationLogger.LogInfo("Try to retrieve form database the record which meets the condition.");
-            T itemFind = await GetItem(expression);
-
-            if (itemFind == null)
-            {
-                _applicationLogger.LogInfo("No data was found");
-                return false;
-            }
             try
             {
+                _applicationLogger.LogInfo("Try to retrieve form database the record which meets the condition.");
+                T itemFind = await GetItem(expression);
+
+                if (itemFind == null)
+                {
+                    _applicationLogger.LogInfo("No data was found");
+                    return false;
+                }
+
                 _applicationLogger.LogInfo("The record was found and now it try to remove the item");
                 _dbContext.Set<T>().Remove(itemFind);
 

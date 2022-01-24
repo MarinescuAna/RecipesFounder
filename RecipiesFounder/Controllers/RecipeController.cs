@@ -137,27 +137,14 @@ namespace RecipiesFounder.Controllers
                 return StatusCode(ErrorsAndMessages.Number_400, ErrorsAndMessages.SomethingWentWrong);
             }
 
-            var newList = new List<RecipeGetDTO>();
-            list.ForEach(async recipe => {
+            var newList = new List<RecipeGetCardDTO>();
+            list.ForEach(recipe => {
                 newList.Add(
-                    new RecipeGetDTO
+                    new RecipeGetCardDTO
                     {
-                        Email = recipe.UserID,
-                        Username=(await _unitOfWorkForServices.UserService.GetUserByEmailAsync(recipe.UserID)).Name,
-                        ExtendedIngredients=recipe.Ingredients?.Select(u=>u.Name).ToArray(),
-                        GlutenFree=recipe.GlutenFree,
-                        HealtyScore=recipe.HealtyScore, 
                         Image=recipe.Image,
-                        ImageSteps=recipe.ImageSteps,
-                        Ketogenic=recipe.Ketogenic,
-                        PreparationDescription=recipe.PreparationDescription,
-                        ReadyInMinutes=recipe.ReadyInMinutes,
-                        Servings=recipe.Servings,
-                        Summary=recipe.Summary,
                         IsPublic = recipe.IsPublic,
                         Title =recipe.Title,
-                        Vegan=recipe.Vegan,
-                        Vegetarian=recipe.Vegetarian,
                         Id = recipe.RecipeID
                     });
 

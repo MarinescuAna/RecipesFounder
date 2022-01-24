@@ -23,6 +23,7 @@ export class UserProfileComponent implements OnInit {
         newRecipe.id=element.id;
         newRecipe.image=element.image;
         newRecipe.title=element.title;
+        newRecipe.isPublic=element.isPublic;
         this.list.results.push(newRecipe);
       });
     },

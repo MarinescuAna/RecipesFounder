@@ -18,12 +18,12 @@
                     <mat-icon>thumb_down_alt</mat-icon>
                 </button>
             </div>
-            <div fxLayout="row" fxLayoutAlign="space-between center">
-                <button class="a" (click)="onRouteTo()">Recipe informations</button>
-                <button *ngIf="canBeModify && recipe.isPublic" class="a" style="margin: 2%;"
-                    (click)="onPulish()"> Publish</button>
-                    <button *ngIf="canBeModify && !recipe.isPublic" class="a" style="margin: 2%;"
-                    (click)="onPulish()">Not Publish</button>
+            <div fxLayout="row" fxLayoutAlign="space-evenly  center">
+                <button class="a" (click)="onRouteTo()">Info</button>
+                <button class="a" (click)="onFavorite()" *ngIf="isFavorite && !deleteFavorite && !disabledFavorite"><mat-icon>favorite</mat-icon></button>
+                <button class="a" (click)="onNotFavorite()" *ngIf="deleteFavorite && !disabledFavorite"><mat-icon>heart_broken</mat-icon></button>
+                <button *ngIf="canBeModify" class="a" style="margin: 2%;"
+                    (click)="onPulish()"> {{publishText}}</button>
             </div>
         </div>
     </mat-card-actions>

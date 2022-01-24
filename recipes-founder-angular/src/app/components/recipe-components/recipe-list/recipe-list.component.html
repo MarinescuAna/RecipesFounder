@@ -5,6 +5,6 @@
     </div>
   </div>
   <div class="row">
-    <app-recipe-card class="col-md-4" *ngFor="let recipe of list.results" [recipe]='recipe'></app-recipe-card>
+    <app-recipe-card class="col-md-4" *ngFor="let recipe of list.results" [deleteFavorite]='false' [recipe]='recipe'></app-recipe-card>
   </div>
 </div>

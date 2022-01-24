@@ -15,4 +15,5 @@ export class RecipeOverviewInfoModule {
   image: string;
   isExternal:boolean=true;
   isPublic:boolean=true;
+  idFavorite:string;
 }

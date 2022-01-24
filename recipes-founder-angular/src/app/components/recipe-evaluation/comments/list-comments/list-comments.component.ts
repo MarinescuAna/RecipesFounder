@@ -33,13 +33,12 @@ export class ListCommentsComponent implements OnInit {
     comment.content=this.form.value.message;
     comment.recipeID=this.recipe.id;
     comment.isExternal=this.recipe.isExternal;
-    debugger
     comment.user=this.serviceAuth.decodeJWToken('email');
     this.serviceComments.InsertComment(comment).subscribe(cr =>{
       let get = new CommentGet();
       get.content=comment.content;
       get.datetimeAdded="a few seconds ago";
-      get.userName=comment.user
+      get.userName=this.serviceAuth.decodeJWToken('unique_name')
       this.comments.push(get);
       this.form.value.message= new FormControl('',[Validators.required]);
     },

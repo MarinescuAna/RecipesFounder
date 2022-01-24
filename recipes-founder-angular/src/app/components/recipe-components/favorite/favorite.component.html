@@ -1,1 +1,7 @@
-<p>favorite works!</p>
+<div class="container-custom">
+    <app-menu></app-menu>
+    <div class="row">
+      <app-recipe-card class="col-md-4" *ngFor="let recipe of list.results" [recipe]='recipe' [canBeModify]='false' [deleteFavorite]='true'>
+      </app-recipe-card>
+    </div>
+  </div>

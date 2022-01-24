@@ -57,6 +57,9 @@ mat-card-title{
     transform: perspective(1000px) rotateX(75deg);
   }
   
+  button{
+    margin: 1%;
+  }
   
 .a::after {
     content: '';

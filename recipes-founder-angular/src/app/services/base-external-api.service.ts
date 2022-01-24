@@ -43,4 +43,7 @@ export class BaseExternalApiService {
     return this.http.put(url, body, httpOptions);
   }
 
+  protected delete(url: string): any {
+    return this.http.delete<any>(url, httpOptions);
+  }
 }

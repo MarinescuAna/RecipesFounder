@@ -83,14 +83,12 @@ export class AuthService extends BaseService {
     super
     .post('Login', userCredentials)
     .subscribe(login => {
-      debugger
         this.setLocalStorage(login as TokenModule);
         localStorage.setItem('is_logged', 'true');
         this.route.navigateByUrl('/home');
         this.alertService.showSucces("Success!");
     },
     err => {
-      debugger
       console.log(err);
       this.alertService.showError(err.message);
     });

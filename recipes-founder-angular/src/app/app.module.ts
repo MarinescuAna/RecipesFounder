@@ -8,10 +8,8 @@ import { RecipeListComponent } from './components/recipe-components/recipe-list/
 import { MatCardModule } from '@angular/material/card';
 import { MatDialogModule} from '@angular/material/dialog';
 import { NavMenuComponent } from './components/nav-menu/nav-menu.component';
-import { MainShoppingListComponent } from './components/shopping-list/main-shopping-list/main-shopping-list.component';
 import { LoginComponent } from './components/account/login/login.component';
 import { RegisterComponent } from './components/account/register/register.component';
-import { MyRecipeComponent } from './components/recipe-components/my-recipe/my-recipe.component';
 import { CreateRecipeComponent } from './components/recipe-components/create-recipe/create-recipe.component';
 import { RecipeDetailsComponent } from './components/recipe-components/recipe-details/recipe-details.component';
 import {MatIconModule} from '@angular/material/icon';
@@ -37,6 +35,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatDividerModule} from '@angular/material/divider';
 import { ProfilePageComponent } from './components/account/profile-page/profile-page.component';
 import { FavoriteComponent } from './components/recipe-components/favorite/favorite.component';
+import { MenuComponent } from './components/account/menu/menu.component';
 
 export function tokenGetter() {
   return localStorage.getItem('access_token');
@@ -48,17 +47,16 @@ export function tokenGetter() {
     RecipeCardComponent,
     RecipeListComponent,
     NavMenuComponent,
-    MainShoppingListComponent,
     LoginComponent,
     RegisterComponent,
-    MyRecipeComponent,
     CreateRecipeComponent,
     RecipeDetailsComponent,
     UserProfileComponent,
     ListCommentsComponent,
     CommentComponent,
     ProfilePageComponent,
-    FavoriteComponent
+    FavoriteComponent,
+    MenuComponent
   ],
   imports: [
     MatDividerModule,

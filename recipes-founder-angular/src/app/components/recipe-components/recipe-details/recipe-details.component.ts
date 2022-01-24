@@ -31,7 +31,6 @@ export class RecipeDetailsComponent implements OnInit {
       params => {
         this.recipeOverviewInfoModule = params as RecipeOverviewInfoModule;
         this.isExternal=this.recipeOverviewInfoModule.isExternal;
-        debugger
         console.log(this.recipeOverviewInfoModule.isExternal)
        // if (this.isExternal===false) {
           this.GetPublicRecipe();

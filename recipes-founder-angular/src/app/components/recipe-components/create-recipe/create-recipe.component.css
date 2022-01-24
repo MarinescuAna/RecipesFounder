@@ -2,7 +2,8 @@
 .create-recipe {
     height: 66vh;
     width: 100%;
-    margin-top: 5%;
+    margin-top: 8%;
+    margin-bottom: 10%;
     justify-content: center;
     align-items: center;
     display: flex;
