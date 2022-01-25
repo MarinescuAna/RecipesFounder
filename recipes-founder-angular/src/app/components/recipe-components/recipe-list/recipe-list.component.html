@@ -1,10 +1,12 @@
 <div class="container-custom">
   <div class="alert alert-success search-bar">
-    <div class="row">
-      <p style="text-align: center;">in progress...</p>
+    <div fxLayoutAlign="center center">
+        <input type="text" placeholder="Search for title ... "  class="form-control form" (change)="onFilter(filer)" #filer>
     </div>
   </div>
   <div class="row">
-    <app-recipe-card class="col-md-4" *ngFor="let recipe of list.results" [deleteFavorite]='false' [recipe]='recipe'></app-recipe-card>
+    <app-recipe-card class="col-md-4" *ngFor="let recipe of filteredList" [deleteFavorite]='false' [recipe]='recipe'></app-recipe-card>
   </div>
 </div>
+
+
